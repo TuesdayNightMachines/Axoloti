@@ -1,14 +1,13 @@
 ### Axoloti Soothe Synth
-_by The Tuesday Night Machines_
-
-Created between August and November 2017
+_Created by The Tuesday Night Machines between August and November 2017_
 
 License: CC-BY-NC-SA
 
-Files:
+#### Files:
 - _TTNM_Soothe_Synth__v04.axp:_ This is the project file for editing in the Axoloti Patcher software
 - _start.bin:_ A compiled autostart file containing the synth which you may place in the root of your Axoloti's microSD card to play with it right away
 
+#### Description:
 This is an automatically playing, calm ambient soundscape generator. It creates evolving sounds and patterns through various feedback paths.
 
 No user interaction is required, however you may control the following parameters:
