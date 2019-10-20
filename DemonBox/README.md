@@ -16,19 +16,20 @@ It requires a [Korg nanoKONTROL2](https://www.korg.com/us/products/computergear/
 more coming soon...
 
 >Notes (to be replaced by a proper description):
+>
 >4 Voices (Noise, Sin, Saw, Braids Wavetables)
 >Stereo Delay
 >Bitcrusher
-
+>
 >Control knobs per Voice:
 >- Frequency
 >- Mod send amount (sends waveform to other waves modulation input) 
 >- Some random S&H parameter modulation
-
+>
 >Control Knobs Delay:
 >- Delay Time L
 >- Delay Time R
-
+>
 >Control BitCrusher:
 >- BitCrush Amount + Delay Feedback up to looping (one knob)
 
