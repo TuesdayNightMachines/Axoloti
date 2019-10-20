@@ -8,20 +8,25 @@ License: CC-BY-NC-SA
 - _start.bin:_ A compiled autostart file containing the synth which you may place in the root of your Axoloti's microSD card to play with it right away
 - _TTNM_DrumSeq_MIDImix_Mapping.midimix:_ The correct mapping filae for your Akai Midimix controller
 - _TTNM_DrumSeq_MIDImix_Mapping.png:_ A screenshot of the Akai Midimix controller mapping
+- _TTNM_DrumSeq_MIDImix_Labels.jpg:_ A screenshot of the Akai Midimix with labels for the knobs and buttons
 
 #### Description:
 This is a drum sample sequencer made for live performances. It requires an [Akai Midimix](https://www.akaipro.com/midimix) USB-MIDI controller to work as it is.
 
-There are six voices (samples) which can each be sequenced individually. The sequencer is not a linear step sequencer, but one based on clock divisions. For each voice you can set two clock division factors to trigger the voice's sample. For example every fourth beat and every tenth beat. This trigger pattern can then also be shifted in time, for example four beats behind the clock, potentially resulting in a completely different feeling of the overall rhythm.
+There are six voices (samples) which can each be sequenced individually. The main sequencer is not a linear step sequencer, but one based on clock divisions of an incoming MIDI clock signal - which is required! The incoming 24ppq MIDI clock is divided by 3 before it is further processed by the user, resulting in eight pulses per quarter note.
 
-In addition to this clock division sequencer, there is also a probability trigger generator per voice. You simply set a probability between 0% and 100% if a sample trigger should happen on the current beat and a random number generator will then determine the result (trigger or no trigger). 
+For each voice you can set two clock division factors to trigger the voice's sample. For example every fourth pulse and every tenth pulse. This trigger pattern can then also be shifted in time, for example four pulses behind the clock, potentially resulting in a completely different feeling of the overall rhythm. You can easily edit the clock division factors in Tables 01 and 02.
 
-Triggers of both sequencers are combined by OR logic and each sequecner has its own MUTE button per voice.
+In addition to this clock division sequencer, there is also a probability trigger generator per voice. You simply set a probability between 0% and 100% if a sample trigger should happen on the current pulse and a random number generator will then determine the result (trigger or no trigger). 
 
-The result can quickly become very crazy and off-beat of course, so there is a "quantized mute" master fader, which lets you adjust wether all sample triggers are sounding or only those on even beats. You can select between every trigger, or every 2nd, 4th or 8th trigger.
+Triggers of both sequencers are combined by OR logic and each sequencer has its own MUTE button per voice.
 
-Additionally you can select one of four different samples per voice with dedicated knobs and there is also two master effects (LPF and distortion).
+The result can quickly become very crazy and off-beat of course, so there is a "quantized mute" master fader, which lets you adjust wether all sample triggers are sounding or only those on even pulses. You can select between sample triggers on every pulse or every 2nd, 4th or 8th pulse (i.e. every quarter). You can edit this too in the masterfader table.
+
+Additionally you can select one of four different samples per voice with dedicated knobs and there is also two master effects (LPF and distortion, also easy to change if you want to). Samples are in .raw format ... I think 44.1kHz, 16bit, mono ... check the Axoloti documentation if that shouldn't work. I also uploaded samples here, which you can use for testing.
 
 Enjoy and let me know if you use this project :)
 
 _hello@nightmachines.tv_
+
+
