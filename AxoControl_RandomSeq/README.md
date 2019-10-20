@@ -24,6 +24,10 @@ Flicking the joystick up or clicking it creates a new eight-step random CC seque
 
 Flicking the joystick down will constantly randomize the CCs of the current track, so there will be no repeating pattern. Flick it down again to switch back to the normal, looping eight-step sequence mode.
 
+Moving the Joystick left will attenuatate the current track's output.
+
+Holding the Joystick to the right will produce constanlty changing CC values, which won't overwrite the current sequence though. So when you release the joystick again the sequence that was playing before is back again.
+
 The currently selected track's CC data is also sent on CC10.
 
 A a four-step CC sequence is sent on CC5, which can be set with the four step knobs (see _TTNM-VLK_RandomSeq_Info.jpg_).
