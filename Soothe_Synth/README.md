@@ -21,4 +21,5 @@ No user interaction is required, however you may control the following parameter
 Why those MIDI CC numbers? I used the synth with a Korg nanoKey Studio controller, which had these CC numbers mapped to its encoders like that. Changing the CC numbers is easy though in the Axoloti Patcher. All modules with MIDI mapping are at the top right with comments.
 
 Enjoy and let me know if you use this synth :)
+
 _hello@nightmachines.tv_
