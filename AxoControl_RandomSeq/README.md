@@ -18,7 +18,7 @@ There are three tracks sending randomzied CC data:
 - Track B on CC3
 - Track C on CC4
 
-You select one of those tracks with the three push buttons.
+You select one of those tracks with the three AxoControl push buttons.
 
 Flicking the joystick up or clicking it creates a new eight-step random CC sequence on the selected track. This can also be done by sending a trigger pulse into the right (ring) audio input channel or by sending any CC1 value on MIDI channel 1 into the DIN port.
 
