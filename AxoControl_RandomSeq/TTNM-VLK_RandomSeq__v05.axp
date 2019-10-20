@@ -1,0 +1,2250 @@
+<patch-1.0 appVersion="1.0.12">
+   <comment type="patch/comment" x="42" y="56" text="AxoCtrl Joystick: flick up or click to randomize selected track once"/>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Joy Y Axis" x="56" y="70">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA0 (ADC1_IN0)"/>
+      </attribs>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_7" x="182" y="70">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="JOY-VALUE" x="252" y="70">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1302" y="70" text="AxoCtrl LEDs display selected track"/>
+   <comment type="patch/comment" x="616" y="84" text="AxoCtrl Knob 1:clock divider RND seq"/>
+   <comment type="patch/comment" x="868" y="84" text="AxoCtrl Knob 2: 4Step 1st Step"/>
+   <comment type="patch/comment" x="1050" y="84" text="AxoCtrl Knob 3: 4Step 2nd Step"/>
+   <obj type="gpio/out/digital" uuid="320eed040f6c55bb24c56416596ac2e67d0c82bc" name="LED A" x="1246" y="84">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PB1"/>
+         <combo attributeName="mode" selection="Push pull"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/out/digital" uuid="320eed040f6c55bb24c56416596ac2e67d0c82bc" name="LED B" x="1358" y="84">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PB8"/>
+         <combo attributeName="mode" selection="Push pull"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/out/digital" uuid="320eed040f6c55bb24c56416596ac2e67d0c82bc" name="LED C" x="1470" y="84">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PB9"/>
+         <combo attributeName="mode" selection="Push pull"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Knob 1" x="630" y="98">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA5 (ADC1_IN5)"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="KNOB1-VALUE" x="756" y="98">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Knob 2" x="882" y="98">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA6 (ADC1_IN6)"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Knob 3" x="1064" y="98">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA7 (ADC1_IN7)"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_1" x="182" y="112">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="364" y="112" text="AxoCtrl Joystick LED, blinks at divided clock speed"/>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_8" x="56" y="126">
+      <params>
+         <frac32.s.map name="value" value="35.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="gpio/out/digital" uuid="320eed040f6c55bb24c56416596ac2e67d0c82bc" name="LED PB0" x="434" y="126">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PB0"/>
+         <combo attributeName="mode" selection="Push pull"/>
+      </attribs>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_4" x="252" y="154">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_1" x="686" y="154">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_5" x="938" y="154">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_6" x="1120" y="154">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/in/digital" uuid="f59f139e8da912742832dc541157f20f30b7ac1b" name="Joy Click" x="168" y="168">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PC0"/>
+         <combo attributeName="mode" selection="pulldown"/>
+      </attribs>
+   </obj>
+   <comment type="patch/comment" x="1302" y="168" text="AxoCtrl A B C Buttons select Tracks A B C"/>
+   <obj type="gpio/in/digital" uuid="f59f139e8da912742832dc541157f20f30b7ac1b" name="A Button" x="1246" y="182">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PC1"/>
+         <combo attributeName="mode" selection="pulldown"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/in/digital" uuid="f59f139e8da912742832dc541157f20f30b7ac1b" name="B Button" x="1358" y="182">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PC2"/>
+         <combo attributeName="mode" selection="pulldown"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/in/digital" uuid="f59f139e8da912742832dc541157f20f30b7ac1b" name="C BUtton" x="1470" y="182">
+      <params/>
+      <attribs>
+         <combo attributeName="pad" selection="PC3"/>
+         <combo attributeName="mode" selection="pulldown"/>
+      </attribs>
+   </obj>
+   <comment type="patch/comment" x="616" y="210" text="AxoCtrl Knob 4: clock divider 4Step"/>
+   <comment type="patch/comment" x="868" y="210" text="AxoCtrl Knob 5: 4Step 3rd Step"/>
+   <comment type="patch/comment" x="1050" y="210" text="AxoCtrl Knob 6: 4Step 4th Step"/>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Knob 4" x="630" y="224">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA2 (ADC1_IN2)"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Knob 5" x="882" y="224">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA3 (ADC1_IN3)"/>
+      </attribs>
+   </obj>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Knob 6" x="1064" y="224">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA4 (ADC1_IN4)"/>
+      </attribs>
+   </obj>
+   <comment type="patch/comment" x="70" y="252" text="AxoCtrl Joystick: flick down to toggle constant randomization on/off"/>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_9" x="56" y="266">
+      <params>
+         <frac32.s.map name="value" value="20.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;" uuid="c624e28be64ac9dad61b6dcd4ae6f241d2879167" name="&lt;_1" x="182" y="266">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_1" x="280" y="266">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_1" x="350" y="266">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_2" x="686" y="280">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_3" x="938" y="280">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_4" x="1120" y="280">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1358" y="294" text="green LED lights when internal clock is active"/>
+   <obj type="lfo/square" uuid="de6909eb64db13af5b43f979a4c130024b3a4793" name="square_1" x="252" y="308">
+      <params>
+         <frac32.s.map name="pitch" value="52.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="gpio/out/led1" uuid="c6679540460d64e2e71760e61cb82fac227e2764" name="green Axoloti LED" x="1386" y="308">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="28" y="448" text="AxoCtrl Joystick: hold right to tamporarily randomize selected output"/>
+   <obj type="gpio/in/analog" uuid="1c0c845ed2d7e06ae5f377ba13d9d09f4747ac87" name="Joy Y Axis_" x="70" y="462">
+      <params/>
+      <attribs>
+         <combo attributeName="channel" selection="PA1 (ADC1_IN1)"/>
+      </attribs>
+   </obj>
+   <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_8" x="196" y="462">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_2" x="196" y="504">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="ctrl/dial b" uuid="862e7d7f29093cb1ce4aed72244d118ad4d46692" name="dial_10" x="70" y="518">
+      <params>
+         <frac32.s.map name="value" value="35.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="294" y="546" text="AxoCtrl Joystick: move left to attenuate current RND output"/>
+   <obj type="TSG/math/limit" uuid="96549a9d-cf2a-4b5c-b9b1-58b08745c3fe" name="limit_to_25" x="322" y="560">
+      <params/>
+      <attribs>
+         <spinner attributeName="max" value="25"/>
+         <spinner attributeName="min" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*c" uuid="7d5ef61c3bcd571ee6bbd8437ef3612125dfb225" name="make_0-1" x="420" y="560">
+      <params>
+         <frac32.u.map name="amp" value="2.5799999237060547"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="disp/dial b" uuid="9ffed04e6a3052d9001eda83bae7024cb6d17037" name="ATT_VALUE" x="532" y="560">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="28" y="728" text="S1 button on the Axoloti activates internal clock LFO"/>
+   <obj type="gpio/in/button1" uuid="2f4fbacf3969a3a1ff9d23899566430051cb01f" name="S1 Button" x="84" y="742">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1176" y="770" text="sending MIDI CC data out the DIN port"/>
+   <comment type="patch/comment" x="742" y="784" text="Click EDIT to view content"/>
+   <patcher type="patch/patcher" uuid="e844adfd-8bd8-4da8-a8e2-66587cff9cd1" name="MAGIC" x="700" y="798">
+      <params/>
+      <attribs/>
+      <subpatch appVersion="1.0.12">
+         <comment type="patch/comment" x="42" y="42" text="INLETS"/>
+         <comment type="patch/comment" x="784" y="56" text="crude clock divider"/>
+         <comment type="patch/comment" x="1498" y="56" text="OUTLETS"/>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="External Clock" x="42" y="70">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="448" y="70" text="AND/OR logic to switch between external and internal clock"/>
+         <obj type="logic/counter" uuid="7a141ba82230e54e5f5cd12da5dbe5a74ba854a5" name="rnd_clock_counter" x="770" y="70">
+            <params>
+               <int32 name="maximum" value="16"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="math/&gt;" uuid="a459588d6498caeb4daf3a07f9d5e9b4a657262f" name="&gt;_2" x="868" y="70">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_5" x="532" y="84">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_1" x="616" y="84">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet b" uuid="191792f616d4835dba0b55375474a12942e5bcbd" name="Clock Div RND Out" x="1484" y="84">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_1" x="476" y="98">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="238" y="112" text="internal clock on/off toggle"/>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="Use Internal Clock" x="42" y="126">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_1" x="266" y="126">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_4" x="532" y="140">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/div 4" uuid="507955275561b256e540f7205386d31545a2828f" name="div_1" x="784" y="140">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_1" x="854" y="140">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="994" y="154" text="8 step counter for random sequencer"/>
+         <obj type="patch/outlet b" uuid="191792f616d4835dba0b55375474a12942e5bcbd" name="Internal Clock On" x="1484" y="154">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/counter" uuid="7a141ba82230e54e5f5cd12da5dbe5a74ba854a5" name="RndSeq Counter" x="1022" y="168">
+            <params>
+               <int32 name="maximum" value="8"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="Internal Clock Speed" x="28" y="182">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="238" y="196" text="internal clock LFO (constant speed but clock dividable)"/>
+         <obj type="lfo/square" uuid="de6909eb64db13af5b43f979a4c130024b3a4793" name="Internal Clock" x="308" y="210">
+            <params>
+               <frac32.s.map name="pitch" value="15.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="conv/unipolar2bipolar" uuid="efc8ee28c508740c5edf7995eaaa07a6d6818e5e" name="unipolar2bipolar_1" x="28" y="224">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet b" uuid="191792f616d4835dba0b55375474a12942e5bcbd" name="Active Track A" x="1484" y="238">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet b" uuid="191792f616d4835dba0b55375474a12942e5bcbd" name="Active Track B" x="1484" y="308">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="756" y="336" text="table keeping track of the selected track"/>
+         <obj type="table/alloc 8b sdram" uuid="7af0c2671e20d9c493553cf8b038ebbec89efb7" name="Selected_Track" x="784" y="350">
+            <params/>
+            <attribs>
+               <combo attributeName="size" selection="2"/>
+               <text attributeName="init">
+                  <sText><![CDATA[]]></sText>
+               </text>
+            </attribs>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="Clock Divider RND" x="28" y="378">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet b" uuid="191792f616d4835dba0b55375474a12942e5bcbd" name="Active Track C" x="1484" y="378">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="280" y="406" text="reading the currently selected track number and randomizing the according sequence"/>
+         <obj type="table/read" uuid="65eb8d0f6a3344638de94c9882999b9af15510d0" name="read_5" x="308" y="420">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Selected_Track"/>
+            </attribs>
+         </obj>
+         <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_1" x="434" y="420">
+            <params/>
+            <attribs>
+               <spinner attributeName="value" value="1"/>
+            </attribs>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_1" x="588" y="420">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="RANDOMIZE" x="28" y="462">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_2" x="434" y="476">
+            <params/>
+            <attribs>
+               <spinner attributeName="value" value="2"/>
+            </attribs>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_2" x="588" y="476">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="1162" y="518" text="on RND TEMP overwrite outputs with random values on each step"/>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="RANDOMIZE TEMP" x="28" y="532">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_3" x="434" y="532">
+            <params/>
+            <attribs>
+               <spinner attributeName="value" value="3"/>
+            </attribs>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_3" x="588" y="532">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_6" x="1232" y="532">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/latch" uuid="14750683752bd43205826430adb7168dae3cc2c" name="latch_1" x="1330" y="532">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="728" y="560" text="writing random noise data into the three sequencer tracks on trigger"/>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="Attenuate" x="28" y="588">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/alloc 8b sdram" uuid="7af0c2671e20d9c493553cf8b038ebbec89efb7" name="Random_Sequencer_A" x="728" y="588">
+            <params/>
+            <attribs>
+               <combo attributeName="size" selection="8"/>
+               <text attributeName="init">
+                  <sText><![CDATA[]]></sText>
+               </text>
+            </attribs>
+         </obj>
+         <obj type="table/alloc 8b sdram" uuid="7af0c2671e20d9c493553cf8b038ebbec89efb7" name="Random_Sequencer_B" x="854" y="588">
+            <params/>
+            <attribs>
+               <combo attributeName="size" selection="8"/>
+               <text attributeName="init">
+                  <sText><![CDATA[]]></sText>
+               </text>
+            </attribs>
+         </obj>
+         <obj type="table/alloc 8b sdram" uuid="7af0c2671e20d9c493553cf8b038ebbec89efb7" name="Random_Sequencer_C" x="980" y="588">
+            <params/>
+            <attribs>
+               <combo attributeName="size" selection="8"/>
+               <text attributeName="init">
+                  <sText><![CDATA[]]></sText>
+               </text>
+            </attribs>
+         </obj>
+         <comment type="patch/comment" x="1232" y="630" text="reading and routing random sequencer data out"/>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="Track A" x="28" y="644">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_1" x="1302" y="644">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 3" uuid="7d947bff9b8466d81c2ddd49b4a7fb702302e05c" name="mix_1" x="1372" y="644">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+               <frac32.u.map name="gain3" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="1526" y="644" text="use table values or TEMP RND"/>
+         <comment type="patch/comment" x="1736" y="644" text="ATT output"/>
+         <comment type="patch/comment" x="224" y="658" text="writing the last selected track number into the table"/>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_5" x="574" y="658">
+            <params>
+               <int32 name="value" value="0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1" x="630" y="658">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_5" x="714" y="658">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_9" x="840" y="658">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_10" x="966" y="658">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_4" x="1554" y="658">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_2" x="1610" y="658">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_12" x="1736" y="658">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="Sel Track Out" x="1862" y="658">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_6" x="294" y="672">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Selected_Track"/>
+            </attribs>
+         </obj>
+         <obj type="table/read" uuid="65eb8d0f6a3344638de94c9882999b9af15510d0" name="read_4" x="1148" y="686">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_7" x="238" y="714">
+            <params>
+               <int32 name="value" value="1"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_2" x="1302" y="714">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_5" x="1554" y="714">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_2" x="1498" y="728">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="Track B" x="28" y="756">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_6" x="574" y="756">
+            <params>
+               <int32 name="value" value="1"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1_" x="630" y="756">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_11" x="714" y="756">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_12" x="840" y="756">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_13" x="966" y="756">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="table/read" uuid="65eb8d0f6a3344638de94c9882999b9af15510d0" name="read_3" x="1148" y="756">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_3" x="1302" y="784">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_7" x="294" y="798">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Selected_Track"/>
+            </attribs>
+         </obj>
+         <obj type="table/read" uuid="65eb8d0f6a3344638de94c9882999b9af15510d0" name="read_2" x="1148" y="826">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_9" x="238" y="840">
+            <params>
+               <int32 name="value" value="2"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_8" x="574" y="854">
+            <params>
+               <int32 name="value" value="5"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1__" x="630" y="854">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_14" x="714" y="854">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_15" x="840" y="854">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_16" x="966" y="854">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <comment type="patch/comment" x="1778" y="854" text="if sel track, att output"/>
+         <obj type="patch/inlet b" uuid="3b0d3eacb5bb978cb05d1372aa2714d5a4790844" name="Track C" x="28" y="868">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_7" x="1484" y="868">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_6" x="1554" y="868">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_3" x="1610" y="868">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_6" x="1750" y="868">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_15" x="1806" y="868">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_6" x="1862" y="868">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="Track A Out" x="1974" y="868">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_8" x="294" y="924">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Selected_Track"/>
+            </attribs>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_3" x="1498" y="924">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_7" x="1554" y="924">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_13" x="1750" y="924">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_14" x="1806" y="924">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_10" x="574" y="952">
+            <params>
+               <int32 name="value" value="3"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1___" x="630" y="952">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_17" x="714" y="952">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_18" x="840" y="952">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_19" x="966" y="952">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_11" x="238" y="966">
+            <params>
+               <int32 name="value" value="3"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_8" x="1484" y="1036">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_8" x="1554" y="1036">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_4" x="1610" y="1036">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_7" x="1750" y="1036">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_16" x="1806" y="1036">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_7" x="1862" y="1036">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="Track B Out" x="1974" y="1036">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_12" x="574" y="1050">
+            <params>
+               <int32 name="value" value="4"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1____" x="630" y="1050">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_20" x="714" y="1050">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_21" x="840" y="1050">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_22" x="966" y="1050">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_4" x="1498" y="1092">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_9" x="1554" y="1092">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_17" x="1750" y="1092">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_18" x="1806" y="1092">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_13" x="574" y="1148">
+            <params>
+               <int32 name="value" value="5"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1_____" x="630" y="1148">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_23" x="714" y="1148">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_24" x="840" y="1148">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_25" x="966" y="1148">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_9" x="1484" y="1204">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_10" x="1554" y="1204">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_5" x="1610" y="1204">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_8" x="1750" y="1204">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_19" x="1806" y="1204">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="mix/mix 2" uuid="682ea5496ded046d981e26b720a6e7f8eca97541" name="mix_8" x="1862" y="1204">
+            <params>
+               <frac32.u.map name="gain1" value="64.0"/>
+               <frac32.u.map name="gain2" value="64.0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="Track C Out" x="1974" y="1204">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_14" x="574" y="1246">
+            <params>
+               <int32 name="value" value="6"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1______" x="630" y="1246">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_26" x="714" y="1246">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_27" x="840" y="1246">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_28" x="966" y="1246">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="logic/inv" uuid="2bd44b865d3b63ff9b80862242bf5be779e3ad5" name="inv_5" x="1498" y="1260">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_11" x="1554" y="1260">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_20" x="1750" y="1260">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_21" x="1806" y="1260">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_15" x="574" y="1344">
+            <params>
+               <int32 name="value" value="7"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="Noise 1_______" x="630" y="1344">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_29" x="714" y="1344">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_A"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_30" x="840" y="1344">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_B"/>
+            </attribs>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_31" x="966" y="1344">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="Random_Sequencer_C"/>
+            </attribs>
+         </obj>
+         <obj type="patch/outlet b" uuid="191792f616d4835dba0b55375474a12942e5bcbd" name="Clock Div 4Step Out" x="1470" y="1456">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="Clock Divider 4Step" x="42" y="1484">
+            <params/>
+            <attribs/>
+         </obj>
+         <comment type="patch/comment" x="294" y="1526" text="writing 4step sequencer data into table"/>
+         <comment type="patch/comment" x="588" y="1526" text="table for 4step values"/>
+         <obj type="table/alloc 8b sdram" uuid="7af0c2671e20d9c493553cf8b038ebbec89efb7" name="4Step_Sequencer" x="588" y="1540">
+            <params/>
+            <attribs>
+               <combo attributeName="size" selection="8"/>
+               <text attributeName="init">
+                  <sText><![CDATA[]]></sText>
+               </text>
+            </attribs>
+         </obj>
+         <obj type="patch/outlet f" uuid="d18a9a550bcaaebac94e25983bd0e27dbfd7233c" name="4Step Output" x="1484" y="1540">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="4Step 1" x="42" y="1554">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_1" x="308" y="1554">
+            <params>
+               <int32 name="value" value="0"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_1" x="364" y="1554">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="4Step_Sequencer"/>
+            </attribs>
+         </obj>
+         <comment type="patch/comment" x="952" y="1596" text="4 step counter for 4step sequencer"/>
+         <comment type="patch/comment" x="1176" y="1596" text="reading 4step values and sending them out"/>
+         <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_1" x="280" y="1610">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="logic/counter" uuid="7a141ba82230e54e5f5cd12da5dbe5a74ba854a5" name="4Step Counter" x="1008" y="1610">
+            <params>
+               <int32 name="maximum" value="4"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="table/read" uuid="65eb8d0f6a3344638de94c9882999b9af15510d0" name="read_1" x="1190" y="1610">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="4Step_Sequencer"/>
+            </attribs>
+         </obj>
+         <comment type="patch/comment" x="784" y="1624" text="crude clock divider"/>
+         <obj type="logic/counter" uuid="7a141ba82230e54e5f5cd12da5dbe5a74ba854a5" name="rnd_clock_counter_" x="784" y="1638">
+            <params>
+               <int32 name="maximum" value="16"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="math/&gt;" uuid="a459588d6498caeb4daf3a07f9d5e9b4a657262f" name="&gt;_3" x="882" y="1638">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="4Step 2" x="42" y="1652">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_2" x="308" y="1652">
+            <params>
+               <int32 name="value" value="1"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_2" x="364" y="1652">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="4Step_Sequencer"/>
+            </attribs>
+         </obj>
+         <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_2" x="280" y="1708">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/div 4" uuid="507955275561b256e540f7205386d31545a2828f" name="div_2" x="784" y="1708">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="math/round" uuid="d0382003e049112e1746390d691d052ae1294db" name="round_2" x="854" y="1708">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="4Step 3" x="42" y="1750">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_3" x="308" y="1750">
+            <params>
+               <int32 name="value" value="2"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_3" x="364" y="1750">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="4Step_Sequencer"/>
+            </attribs>
+         </obj>
+         <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_3" x="280" y="1806">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="patch/inlet f" uuid="5c585d2dcd9c05631e345ac09626a22a639d7c13" name="4Step 4" x="42" y="1848">
+            <params/>
+            <attribs/>
+         </obj>
+         <obj type="ctrl/i" uuid="a3786816db6ea5bc6ac4193a5cccdb2c83b83496" name="i_4" x="308" y="1848">
+            <params>
+               <int32 name="value" value="3"/>
+            </params>
+            <attribs/>
+         </obj>
+         <obj type="table/write" uuid="50b8c8807ba1fc700ed79381c9360a982e0c3fb9" name="write_4" x="364" y="1848">
+            <params/>
+            <attribs>
+               <objref attributeName="table" obj="4Step_Sequencer"/>
+            </attribs>
+         </obj>
+         <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_4" x="280" y="1904">
+            <params/>
+            <attribs/>
+         </obj>
+         <nets>
+            <net>
+               <source obj="External Clock" outlet="inlet"/>
+               <dest obj="and_5" inlet="i1"/>
+            </net>
+            <net>
+               <source obj="4Step 1" outlet="inlet"/>
+               <dest obj="write_1" inlet="v"/>
+               <dest obj="change_1" inlet="in"/>
+            </net>
+            <net>
+               <source obj="change_1" outlet="trig"/>
+               <dest obj="write_1" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="i_1" outlet="out"/>
+               <dest obj="write_1" inlet="a"/>
+            </net>
+            <net>
+               <source obj="4Step 2" outlet="inlet"/>
+               <dest obj="write_2" inlet="v"/>
+               <dest obj="change_2" inlet="in"/>
+            </net>
+            <net>
+               <source obj="change_2" outlet="trig"/>
+               <dest obj="write_2" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="i_2" outlet="out"/>
+               <dest obj="write_2" inlet="a"/>
+            </net>
+            <net>
+               <source obj="4Step 3" outlet="inlet"/>
+               <dest obj="write_3" inlet="v"/>
+               <dest obj="change_3" inlet="in"/>
+            </net>
+            <net>
+               <source obj="change_3" outlet="trig"/>
+               <dest obj="write_3" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="i_3" outlet="out"/>
+               <dest obj="write_3" inlet="a"/>
+            </net>
+            <net>
+               <source obj="4Step 4" outlet="inlet"/>
+               <dest obj="write_4" inlet="v"/>
+               <dest obj="change_4" inlet="in"/>
+            </net>
+            <net>
+               <source obj="change_4" outlet="trig"/>
+               <dest obj="write_4" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="i_4" outlet="out"/>
+               <dest obj="write_4" inlet="a"/>
+            </net>
+            <net>
+               <source obj="4Step Counter" outlet="o"/>
+               <dest obj="read_1" inlet="a"/>
+            </net>
+            <net>
+               <source obj="read_1" outlet="o"/>
+               <dest obj="4Step Output" inlet="outlet"/>
+            </net>
+            <net>
+               <source obj="RANDOMIZE" outlet="inlet"/>
+               <dest obj="and_1" inlet="i1"/>
+               <dest obj="and_2" inlet="i1"/>
+               <dest obj="and_3" inlet="i1"/>
+            </net>
+            <net>
+               <source obj="Noise 1" outlet="wave"/>
+               <dest obj="write_5" inlet="v"/>
+               <dest obj="write_9" inlet="v"/>
+               <dest obj="write_10" inlet="v"/>
+               <dest obj="latch_1" inlet="i"/>
+            </net>
+            <net>
+               <source obj="i_5" outlet="out"/>
+               <dest obj="write_5" inlet="a"/>
+               <dest obj="write_9" inlet="a"/>
+               <dest obj="write_10" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Track A" outlet="inlet"/>
+               <dest obj="write_6" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="i_7" outlet="out"/>
+               <dest obj="write_6" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_9" outlet="out"/>
+               <dest obj="write_7" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_11" outlet="out"/>
+               <dest obj="write_8" inlet="v"/>
+            </net>
+            <net>
+               <source obj="Track B" outlet="inlet"/>
+               <dest obj="write_7" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="Track C" outlet="inlet"/>
+               <dest obj="write_8" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="read_2" outlet="o"/>
+               <dest obj="*_3" inlet="a"/>
+               <dest obj="*_11" inlet="a"/>
+            </net>
+            <net>
+               <source obj="RndSeq Counter" outlet="o"/>
+               <dest obj="read_2" inlet="a"/>
+               <dest obj="read_3" inlet="a"/>
+               <dest obj="read_4" inlet="a"/>
+            </net>
+            <net>
+               <source obj="read_3" outlet="o"/>
+               <dest obj="*_2" inlet="a"/>
+               <dest obj="*_9" inlet="a"/>
+            </net>
+            <net>
+               <source obj="read_5" outlet="o"/>
+               <dest obj="==_1" inlet="in"/>
+               <dest obj="==_2" inlet="in"/>
+               <dest obj="==_3" inlet="in"/>
+            </net>
+            <net>
+               <source obj="==_1" outlet="out"/>
+               <dest obj="Active Track A" inlet="outlet"/>
+               <dest obj="and_1" inlet="i2"/>
+               <dest obj="*_1" inlet="b"/>
+               <dest obj="and_7" inlet="i1"/>
+               <dest obj="*_13" inlet="b"/>
+               <dest obj="inv_6" inlet="i"/>
+            </net>
+            <net>
+               <source obj="==_2" outlet="out"/>
+               <dest obj="Active Track B" inlet="outlet"/>
+               <dest obj="and_2" inlet="i2"/>
+               <dest obj="*_2" inlet="b"/>
+               <dest obj="and_8" inlet="i1"/>
+               <dest obj="inv_7" inlet="i"/>
+               <dest obj="*_17" inlet="b"/>
+            </net>
+            <net>
+               <source obj="==_3" outlet="out"/>
+               <dest obj="Active Track C" inlet="outlet"/>
+               <dest obj="and_3" inlet="i2"/>
+               <dest obj="*_3" inlet="b"/>
+               <dest obj="and_9" inlet="i1"/>
+               <dest obj="inv_8" inlet="i"/>
+            </net>
+            <net>
+               <source obj="and_1" outlet="o"/>
+               <dest obj="write_5" inlet="trig"/>
+               <dest obj="write_11" inlet="trig"/>
+               <dest obj="write_14" inlet="trig"/>
+               <dest obj="write_17" inlet="trig"/>
+               <dest obj="write_20" inlet="trig"/>
+               <dest obj="write_23" inlet="trig"/>
+               <dest obj="write_26" inlet="trig"/>
+               <dest obj="write_29" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="and_2" outlet="o"/>
+               <dest obj="write_9" inlet="trig"/>
+               <dest obj="write_12" inlet="trig"/>
+               <dest obj="write_15" inlet="trig"/>
+               <dest obj="write_18" inlet="trig"/>
+               <dest obj="write_21" inlet="trig"/>
+               <dest obj="write_24" inlet="trig"/>
+               <dest obj="write_27" inlet="trig"/>
+               <dest obj="write_30" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="and_3" outlet="o"/>
+               <dest obj="write_10" inlet="trig"/>
+               <dest obj="write_13" inlet="trig"/>
+               <dest obj="write_16" inlet="trig"/>
+               <dest obj="write_19" inlet="trig"/>
+               <dest obj="write_22" inlet="trig"/>
+               <dest obj="write_25" inlet="trig"/>
+               <dest obj="write_28" inlet="trig"/>
+               <dest obj="write_31" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="Noise 1_" outlet="wave"/>
+               <dest obj="write_11" inlet="v"/>
+               <dest obj="write_12" inlet="v"/>
+               <dest obj="write_13" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_6" outlet="out"/>
+               <dest obj="write_11" inlet="a"/>
+               <dest obj="write_12" inlet="a"/>
+               <dest obj="write_13" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Noise 1__" outlet="wave"/>
+               <dest obj="write_14" inlet="v"/>
+               <dest obj="write_15" inlet="v"/>
+               <dest obj="write_16" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_8" outlet="out"/>
+               <dest obj="write_14" inlet="a"/>
+               <dest obj="write_15" inlet="a"/>
+               <dest obj="write_16" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Noise 1___" outlet="wave"/>
+               <dest obj="write_17" inlet="v"/>
+               <dest obj="write_18" inlet="v"/>
+               <dest obj="write_19" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_10" outlet="out"/>
+               <dest obj="write_17" inlet="a"/>
+               <dest obj="write_18" inlet="a"/>
+               <dest obj="write_19" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Noise 1____" outlet="wave"/>
+               <dest obj="write_20" inlet="v"/>
+               <dest obj="write_21" inlet="v"/>
+               <dest obj="write_22" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_12" outlet="out"/>
+               <dest obj="write_20" inlet="a"/>
+               <dest obj="write_21" inlet="a"/>
+               <dest obj="write_22" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Noise 1_____" outlet="wave"/>
+               <dest obj="write_23" inlet="v"/>
+               <dest obj="write_24" inlet="v"/>
+               <dest obj="write_25" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_13" outlet="out"/>
+               <dest obj="write_23" inlet="a"/>
+               <dest obj="write_24" inlet="a"/>
+               <dest obj="write_25" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Noise 1______" outlet="wave"/>
+               <dest obj="write_26" inlet="v"/>
+               <dest obj="write_27" inlet="v"/>
+               <dest obj="write_28" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_14" outlet="out"/>
+               <dest obj="write_26" inlet="a"/>
+               <dest obj="write_27" inlet="a"/>
+               <dest obj="write_28" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Noise 1_______" outlet="wave"/>
+               <dest obj="write_29" inlet="v"/>
+               <dest obj="write_30" inlet="v"/>
+               <dest obj="write_31" inlet="v"/>
+            </net>
+            <net>
+               <source obj="i_15" outlet="out"/>
+               <dest obj="write_29" inlet="a"/>
+               <dest obj="write_30" inlet="a"/>
+               <dest obj="write_31" inlet="a"/>
+            </net>
+            <net>
+               <source obj="*_1" outlet="result"/>
+               <dest obj="mix_1" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="*_2" outlet="result"/>
+               <dest obj="mix_1" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="*_3" outlet="result"/>
+               <dest obj="mix_1" inlet="in3"/>
+            </net>
+            <net>
+               <source obj="mix_1" outlet="out"/>
+               <dest obj="*_5" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Clock Divider RND" outlet="inlet"/>
+               <dest obj="div_1" inlet="in"/>
+            </net>
+            <net>
+               <source obj="&gt;_2" outlet="out"/>
+               <dest obj="rnd_clock_counter" inlet="r"/>
+               <dest obj="RndSeq Counter" inlet="trig"/>
+               <dest obj="Clock Div RND Out" inlet="outlet"/>
+               <dest obj="and_6" inlet="i1"/>
+            </net>
+            <net>
+               <source obj="div_1" outlet="out"/>
+               <dest obj="round_1" inlet="in"/>
+            </net>
+            <net>
+               <source obj="round_1" outlet="out"/>
+               <dest obj="&gt;_2" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="rnd_clock_counter" outlet="o"/>
+               <dest obj="&gt;_2" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="Internal Clock Speed" outlet="inlet"/>
+               <dest obj="unipolar2bipolar_1" inlet="i"/>
+            </net>
+            <net>
+               <source obj="Use Internal Clock" outlet="inlet"/>
+               <dest obj="toggle_1" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="toggle_1" outlet="o"/>
+               <dest obj="Internal Clock On" inlet="outlet"/>
+               <dest obj="and_4" inlet="i1"/>
+               <dest obj="inv_1" inlet="i"/>
+            </net>
+            <net>
+               <source obj="Internal Clock" outlet="wave"/>
+               <dest obj="and_4" inlet="i2"/>
+            </net>
+            <net>
+               <source obj="inv_1" outlet="o"/>
+               <dest obj="and_5" inlet="i2"/>
+            </net>
+            <net>
+               <source obj="and_5" outlet="o"/>
+               <dest obj="or_1" inlet="i1"/>
+            </net>
+            <net>
+               <source obj="and_4" outlet="o"/>
+               <dest obj="or_1" inlet="i2"/>
+            </net>
+            <net>
+               <source obj="or_1" outlet="o"/>
+               <dest obj="rnd_clock_counter" inlet="trig"/>
+               <dest obj="rnd_clock_counter_" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="&gt;_3" outlet="out"/>
+               <dest obj="rnd_clock_counter_" inlet="r"/>
+               <dest obj="4Step Counter" inlet="trig"/>
+               <dest obj="Clock Div 4Step Out" inlet="outlet"/>
+            </net>
+            <net>
+               <source obj="div_2" outlet="out"/>
+               <dest obj="round_2" inlet="in"/>
+            </net>
+            <net>
+               <source obj="round_2" outlet="out"/>
+               <dest obj="&gt;_3" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="rnd_clock_counter_" outlet="o"/>
+               <dest obj="&gt;_3" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="Clock Divider 4Step" outlet="inlet"/>
+               <dest obj="div_2" inlet="in"/>
+            </net>
+            <net>
+               <source obj="and_6" outlet="o"/>
+               <dest obj="latch_1" inlet="trig"/>
+            </net>
+            <net>
+               <source obj="RANDOMIZE TEMP" outlet="inlet"/>
+               <dest obj="and_6" inlet="i2"/>
+               <dest obj="*_4" inlet="b"/>
+               <dest obj="inv_2" inlet="i"/>
+               <dest obj="and_7" inlet="i2"/>
+               <dest obj="and_8" inlet="i2"/>
+               <dest obj="and_9" inlet="i2"/>
+            </net>
+            <net>
+               <source obj="latch_1" outlet="o"/>
+               <dest obj="*_4" inlet="a"/>
+               <dest obj="*_6" inlet="a"/>
+               <dest obj="*_8" inlet="a"/>
+               <dest obj="*_10" inlet="a"/>
+            </net>
+            <net>
+               <source obj="*_4" outlet="result"/>
+               <dest obj="mix_2" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_2" outlet="o"/>
+               <dest obj="*_5" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_5" outlet="result"/>
+               <dest obj="mix_2" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="and_7" outlet="o"/>
+               <dest obj="*_6" inlet="b"/>
+               <dest obj="inv_3" inlet="i"/>
+            </net>
+            <net>
+               <source obj="*_6" outlet="result"/>
+               <dest obj="mix_3" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_3" outlet="o"/>
+               <dest obj="*_7" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_7" outlet="result"/>
+               <dest obj="mix_3" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="mix_3" outlet="out"/>
+               <dest obj="*_14" inlet="a"/>
+               <dest obj="*_15" inlet="a"/>
+            </net>
+            <net>
+               <source obj="read_4" outlet="o"/>
+               <dest obj="*_1" inlet="a"/>
+               <dest obj="*_7" inlet="a"/>
+            </net>
+            <net>
+               <source obj="and_8" outlet="o"/>
+               <dest obj="*_8" inlet="b"/>
+               <dest obj="inv_4" inlet="i"/>
+            </net>
+            <net>
+               <source obj="*_8" outlet="result"/>
+               <dest obj="mix_4" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_4" outlet="o"/>
+               <dest obj="*_9" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_9" outlet="result"/>
+               <dest obj="mix_4" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="and_9" outlet="o"/>
+               <dest obj="*_10" inlet="b"/>
+               <dest obj="inv_5" inlet="i"/>
+            </net>
+            <net>
+               <source obj="*_10" outlet="result"/>
+               <dest obj="mix_5" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_5" outlet="o"/>
+               <dest obj="*_11" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_11" outlet="result"/>
+               <dest obj="mix_5" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="mix_5" outlet="out"/>
+               <dest obj="*_19" inlet="a"/>
+               <dest obj="*_21" inlet="a"/>
+            </net>
+            <net>
+               <source obj="mix_2" outlet="out"/>
+               <dest obj="*_12" inlet="a"/>
+            </net>
+            <net>
+               <source obj="Attenuate" outlet="inlet"/>
+               <dest obj="*_12" inlet="b"/>
+               <dest obj="*_13" inlet="a"/>
+               <dest obj="*_17" inlet="a"/>
+               <dest obj="*_20" inlet="a"/>
+            </net>
+            <net>
+               <source obj="*_12" outlet="result"/>
+               <dest obj="Sel Track Out" inlet="outlet"/>
+            </net>
+            <net>
+               <source obj="*_13" outlet="result"/>
+               <dest obj="*_14" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_14" outlet="result"/>
+               <dest obj="mix_6" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="mix_6" outlet="out"/>
+               <dest obj="Track A Out" inlet="outlet"/>
+            </net>
+            <net>
+               <source obj="*_15" outlet="result"/>
+               <dest obj="mix_6" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_6" outlet="o"/>
+               <dest obj="*_15" inlet="b"/>
+            </net>
+            <net>
+               <source obj="mix_4" outlet="out"/>
+               <dest obj="*_18" inlet="a"/>
+               <dest obj="*_16" inlet="a"/>
+            </net>
+            <net>
+               <source obj="*_17" outlet="result"/>
+               <dest obj="*_18" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_18" outlet="result"/>
+               <dest obj="mix_7" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="*_16" outlet="result"/>
+               <dest obj="mix_7" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_7" outlet="o"/>
+               <dest obj="*_16" inlet="b"/>
+            </net>
+            <net>
+               <source obj="mix_7" outlet="out"/>
+               <dest obj="Track B Out" inlet="outlet"/>
+            </net>
+            <net>
+               <source obj="*_20" outlet="result"/>
+               <dest obj="*_21" inlet="b"/>
+            </net>
+            <net>
+               <source obj="*_21" outlet="result"/>
+               <dest obj="mix_8" inlet="in2"/>
+            </net>
+            <net>
+               <source obj="*_19" outlet="result"/>
+               <dest obj="mix_8" inlet="in1"/>
+            </net>
+            <net>
+               <source obj="inv_8" outlet="o"/>
+               <dest obj="*_19" inlet="b"/>
+            </net>
+            <net>
+               <source obj="mix_8" outlet="out"/>
+               <dest obj="Track C Out" inlet="outlet"/>
+            </net>
+         </nets>
+         <settings>
+            <subpatchmode>no</subpatchmode>
+         </settings>
+         <notes><![CDATA[]]></notes>
+         <windowPos>
+            <x>242</x>
+            <y>142</y>
+            <width>1646</width>
+            <height>938</height>
+         </windowPos>
+      </subpatch>
+   </patcher>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_2" x="1148" y="798">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/out/cc" uuid="7ca9b2c1b4339022c491a8afd70353c17d765584" name="Selectred Track Output" x="1274" y="798">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="cc" value="10"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_1" x="1400" y="798">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="812" text="MIDI Clock sync"/>
+   <comment type="patch/comment" x="266" y="812" text="MIDI Clock and analog clock are combined"/>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_6" x="616" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/clock" uuid="f1aa3a79d6de9bd6d38dc64c9d4bb5c9de4f4198" name="MIDI Clock in" x="70" y="826">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_1" x="322" y="826">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="96e39ae624c3f3c952cec4a95e1986ee0104f718" name="change_1" x="154" y="840">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_2" x="518" y="868">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_1" x="1148" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/out/cc" uuid="7ca9b2c1b4339022c491a8afd70353c17d765584" name="Track A Output" x="1274" y="924">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="cc" value="2"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_2" x="1400" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="42" y="952" text="L audio input: receives analog clock pulses"/>
+   <obj type="audio/in left" uuid="d40e60b7641fe75af4d7c91b45bb038aacafc52e" name="Audio In L" x="84" y="966">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_1" x="154" y="966">
+      <params>
+         <frac32.u.map name="c" value="5.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="238" y="1008" text="makes red LED blink on incoming pulse (for troubleshooting)"/>
+   <obj type="audio/inconfig l" uuid="7007d026acb7c3586f60a7f0898718d1ca7e0607" name="Audio Config L" x="56" y="1022">
+      <params/>
+      <attribs>
+         <combo attributeName="gain" selection="-6dB"/>
+         <combo attributeName="boost" selection="0dB"/>
+      </attribs>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_3" x="308" y="1022">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="gpio/out/led2" uuid="3d7a4c75d1f9901181a17ba5de752782de911803" name="red axoloti LED" x="392" y="1022">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_3" x="1148" y="1050">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/out/cc" uuid="7ca9b2c1b4339022c491a8afd70353c17d765584" name="Track B Output" x="1274" y="1050">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="cc" value="3"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_3" x="1400" y="1050">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="28" y="1148" text="R audio input: randmizes selected track on trigger pulse"/>
+   <obj type="audio/in right" uuid="5f35c9f87b3f291a8120a10db71935bebd186469" name="Audio In R" x="56" y="1162">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_2" x="140" y="1162">
+      <params>
+         <frac32.u.map name="c" value="5.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="602" y="1176" text="sine wave tracking random sequencer pitch (selected track)"/>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_4" x="1148" y="1176">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/out/cc" uuid="7ca9b2c1b4339022c491a8afd70353c17d765584" name="Track C Output" x="1274" y="1176">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="cc" value="4"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_4" x="1400" y="1176">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="osc/sine" uuid="6e094045cca76a9dbf7ebfa72e44e4700d2b3ba" name="sine_1" x="644" y="1190">
+      <params>
+         <frac32.s.map name="pitch" value="0.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="mix/mix 1 g" uuid="e6982841c1bf323ee2062a4b6cc2737adafbd668" name="att" x="742" y="1190">
+      <params>
+         <frac32.u.map name="gain1" value="55.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="audio/inconfig r" uuid="8468fe7907553f335959a7f69cbc5a1f7b5d4d1d" name="Audio Config R" x="42" y="1218">
+      <params/>
+      <attribs>
+         <combo attributeName="gain" selection="-6dB"/>
+         <combo attributeName="boost" selection="0dB"/>
+      </attribs>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_5" x="266" y="1232">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="audio/out stereo" uuid="a1ca7a567f535acc21055669829101d3ee7f0189" name="Audio Output" x="910" y="1232">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="42" y="1316" text="Sending data to MIDI Ch.1, CC 01 randomizes selected track"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_6" x="112" y="1330">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="1"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <comment type="patch/comment" x="658" y="1344" text="sine wave tracking 4step pitch"/>
+   <obj type="midi/out/cc" uuid="7ca9b2c1b4339022c491a8afd70353c17d765584" name="4Step Output" x="1274" y="1344">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="cc" value="5"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_5" x="1400" y="1344">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="osc/sine" uuid="6e094045cca76a9dbf7ebfa72e44e4700d2b3ba" name="sine_2" x="644" y="1358">
+      <params>
+         <frac32.s.map name="pitch" value="0.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="mix/mix 1 g" uuid="e6982841c1bf323ee2062a4b6cc2737adafbd668" name="att_" x="742" y="1358">
+      <params>
+         <frac32.u.map name="gain1" value="55.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1078" y="1484" text="divided gate outputs"/>
+   <obj type="rbrt/midi/out/note send" uuid="53e66cf7-7e70-42a7-8980-54c3778059f8" name="note_3" x="1232" y="1484">
+      <params>
+         <int32 name="startnote" value="32"/>
+      </params>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="velon" value="127"/>
+         <spinner attributeName="veloff" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rbrt/midi/out/note send" uuid="53e66cf7-7e70-42a7-8980-54c3778059f8" name="note_4" x="1372" y="1484">
+      <params>
+         <int32 name="startnote" value="33"/>
+      </params>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="velon" value="127"/>
+         <spinner attributeName="veloff" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_4" x="938" y="1512">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_5" x="1036" y="1512">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/xor 2" uuid="7902b0001a2672a9008b3882d3681ec3e33fec74" name="xor_1" x="1120" y="1540">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_2" x="938" y="1582">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_3" x="1036" y="1582">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="644" y="1652" text="50/50 Chance of Trigger"/>
+   <obj type="noise/uniform" uuid="a3926ef22ae9ac217cd09933d90101848796eb78" name="uniform_1" x="378" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="5b5f9405be365706c1ad37266d9df07b9a1570ee" name="bipolar2unipolar_5" x="462" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/latch" uuid="14750683752bd43205826430adb7168dae3cc2c" name="latch_1" x="588" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_3" x="658" y="1666">
+      <params>
+         <frac32.u.map name="c" value="31.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_1" x="714" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="rbrt/midi/out/note send" uuid="53e66cf7-7e70-42a7-8980-54c3778059f8" name="note_6" x="784" y="1666">
+      <params>
+         <int32 name="startnote" value="35"/>
+      </params>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="velon" value="127"/>
+         <spinner attributeName="veloff" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rbrt/midi/out/note send" uuid="53e66cf7-7e70-42a7-8980-54c3778059f8" name="note_5" x="1232" y="1666">
+      <params>
+         <int32 name="startnote" value="34"/>
+      </params>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="velon" value="127"/>
+         <spinner attributeName="veloff" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rbrt/midi/out/note send" uuid="53e66cf7-7e70-42a7-8980-54c3778059f8" name="note_1" x="1232" y="1848">
+      <params>
+         <int32 name="startnote" value="30"/>
+      </params>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="velon" value="127"/>
+         <spinner attributeName="veloff" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rbrt/midi/out/note send" uuid="53e66cf7-7e70-42a7-8980-54c3778059f8" name="note_2" x="1372" y="1848">
+      <params>
+         <int32 name="startnote" value="31"/>
+      </params>
+      <attribs>
+         <combo attributeName="device" selection="din"/>
+         <spinner attributeName="channel" value="1"/>
+         <spinner attributeName="velon" value="127"/>
+         <spinner attributeName="veloff" value="0"/>
+      </attribs>
+   </obj>
+   <nets>
+      <net>
+         <source obj="MAGIC" outlet="Active Track A"/>
+         <dest obj="LED A" inlet="in"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Active Track B"/>
+         <dest obj="LED B" inlet="in"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Active Track C"/>
+         <dest obj="LED C" inlet="in"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Track A Out"/>
+         <dest obj="bipolar2unipolar_1" inlet="i"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Sel Track Out"/>
+         <dest obj="bipolar2unipolar_2" inlet="i"/>
+         <dest obj="sine_1" inlet="pitch"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Clock Div RND Out"/>
+         <dest obj="Selectred Track Output" inlet="trig"/>
+         <dest obj="Track A Output" inlet="trig"/>
+         <dest obj="Track B Output" inlet="trig"/>
+         <dest obj="Track C Output" inlet="trig"/>
+         <dest obj="LED PB0" inlet="in"/>
+         <dest obj="toggle_4" inlet="trig"/>
+         <dest obj="latch_1" inlet="trig"/>
+         <dest obj="and_1" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Track B Out"/>
+         <dest obj="bipolar2unipolar_3" inlet="i"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Track C Out"/>
+         <dest obj="bipolar2unipolar_4" inlet="i"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="4Step Output"/>
+         <dest obj="4Step Output" inlet="v"/>
+         <dest obj="sine_2" inlet="pitch"/>
+         <dest obj="dial_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Internal Clock On"/>
+         <dest obj="green Axoloti LED" inlet="in"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_1" outlet="o"/>
+         <dest obj="Track A Output" inlet="v"/>
+         <dest obj="dial_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_2" outlet="o"/>
+         <dest obj="Selectred Track Output" inlet="v"/>
+         <dest obj="dial_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_4" outlet="o"/>
+         <dest obj="Track C Output" inlet="v"/>
+         <dest obj="dial_4" inlet="in"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_3" outlet="o"/>
+         <dest obj="Track B Output" inlet="v"/>
+         <dest obj="dial_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="MIDI Clock in" outlet="pos4ppq"/>
+         <dest obj="change_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="or_1" outlet="o"/>
+         <dest obj="MAGIC" inlet="External Clock"/>
+      </net>
+      <net>
+         <source obj="Audio In L" outlet="wave"/>
+         <dest obj="&gt;c_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_1" outlet="out"/>
+         <dest obj="or_1" inlet="i2"/>
+         <dest obj="or_3" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="Audio In R" outlet="wave"/>
+         <dest obj="&gt;c_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_2" outlet="out"/>
+         <dest obj="or_3" inlet="i2"/>
+         <dest obj="or_5" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="change_1" outlet="trig"/>
+         <dest obj="or_1" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="or_3" outlet="o"/>
+         <dest obj="red axoloti LED" inlet="in"/>
+      </net>
+      <net>
+         <source obj="sine_1" outlet="wave"/>
+         <dest obj="att" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="att" outlet="out"/>
+         <dest obj="Audio Output" inlet="left"/>
+      </net>
+      <net>
+         <source obj="sine_2" outlet="wave"/>
+         <dest obj="att_" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="att_" outlet="out"/>
+         <dest obj="Audio Output" inlet="right"/>
+      </net>
+      <net>
+         <source obj="Joy Y Axis" outlet="out"/>
+         <dest obj="round_7" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Joy Click" outlet="out"/>
+         <dest obj="or_4" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="or_4" outlet="o"/>
+         <dest obj="or_2" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="or_2" outlet="o"/>
+         <dest obj="or_6" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="S1 Button" outlet="out"/>
+         <dest obj="MAGIC" inlet="Use Internal Clock"/>
+      </net>
+      <net>
+         <source obj="Knob 1" outlet="out"/>
+         <dest obj="round_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="A Button" outlet="out"/>
+         <dest obj="MAGIC" inlet="Track A"/>
+      </net>
+      <net>
+         <source obj="B Button" outlet="out"/>
+         <dest obj="MAGIC" inlet="Track B"/>
+      </net>
+      <net>
+         <source obj="C BUtton" outlet="out"/>
+         <dest obj="MAGIC" inlet="Track C"/>
+      </net>
+      <net>
+         <source obj="Knob 2" outlet="out"/>
+         <dest obj="round_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Knob 3" outlet="out"/>
+         <dest obj="round_6" inlet="in"/>
+      </net>
+      <net>
+         <source obj="Knob 6" outlet="out"/>
+         <dest obj="round_4" inlet="in"/>
+      </net>
+      <net>
+         <source obj="cc_6" outlet="trig"/>
+         <dest obj="or_5" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="or_5" outlet="o"/>
+         <dest obj="or_2" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="MAGIC" outlet="Clock Div 4Step Out"/>
+         <dest obj="4Step Output" inlet="trig"/>
+         <dest obj="toggle_2" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="round_2" outlet="out"/>
+         <dest obj="MAGIC" inlet="Clock Divider 4Step"/>
+      </net>
+      <net>
+         <source obj="round_1" outlet="out"/>
+         <dest obj="KNOB1-VALUE" inlet="in"/>
+         <dest obj="MAGIC" inlet="Clock Divider RND"/>
+      </net>
+      <net>
+         <source obj="Knob 4" outlet="out"/>
+         <dest obj="round_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="round_4" outlet="out"/>
+         <dest obj="MAGIC" inlet="4Step 4"/>
+      </net>
+      <net>
+         <source obj="round_3" outlet="out"/>
+         <dest obj="MAGIC" inlet="4Step 3"/>
+      </net>
+      <net>
+         <source obj="Knob 5" outlet="out"/>
+         <dest obj="round_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="round_5" outlet="out"/>
+         <dest obj="MAGIC" inlet="4Step 1"/>
+      </net>
+      <net>
+         <source obj="round_6" outlet="out"/>
+         <dest obj="MAGIC" inlet="4Step 2"/>
+      </net>
+      <net>
+         <source obj="round_7" outlet="out"/>
+         <dest obj="&gt;_1" inlet="in1"/>
+         <dest obj="JOY-VALUE" inlet="in"/>
+         <dest obj="&lt;_1" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="dial_8" outlet="out"/>
+         <dest obj="&gt;_1" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_1" outlet="out"/>
+         <dest obj="or_4" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="dial_9" outlet="out"/>
+         <dest obj="&lt;_1" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="or_6" outlet="o"/>
+         <dest obj="MAGIC" inlet="RANDOMIZE"/>
+      </net>
+      <net>
+         <source obj="&lt;_1" outlet="out"/>
+         <dest obj="toggle_1" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="square_1" outlet="wave"/>
+         <dest obj="*_1" inlet="b"/>
+      </net>
+      <net>
+         <source obj="toggle_1" outlet="o"/>
+         <dest obj="*_1" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_1" outlet="result"/>
+         <dest obj="or_6" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="toggle_2" outlet="o"/>
+         <dest obj="note_1" inlet="g0"/>
+         <dest obj="toggle_3" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_3" outlet="o"/>
+         <dest obj="note_2" inlet="g0"/>
+         <dest obj="xor_1" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="toggle_4" outlet="o"/>
+         <dest obj="toggle_5" inlet="trig"/>
+         <dest obj="note_3" inlet="g0"/>
+      </net>
+      <net>
+         <source obj="toggle_5" outlet="o"/>
+         <dest obj="note_4" inlet="g0"/>
+         <dest obj="xor_1" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="xor_1" outlet="o"/>
+         <dest obj="note_5" inlet="g0"/>
+      </net>
+      <net>
+         <source obj="Joy Y Axis_" outlet="out"/>
+         <dest obj="round_8" inlet="in"/>
+      </net>
+      <net>
+         <source obj="round_8" outlet="out"/>
+         <dest obj="&gt;_2" inlet="in1"/>
+         <dest obj="limit_to_25" inlet="i"/>
+      </net>
+      <net>
+         <source obj="dial_10" outlet="out"/>
+         <dest obj="&gt;_2" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_2" outlet="out"/>
+         <dest obj="MAGIC" inlet="RANDOMIZE TEMP"/>
+      </net>
+      <net>
+         <source obj="make_0-1" outlet="out"/>
+         <dest obj="ATT_VALUE" inlet="in"/>
+         <dest obj="MAGIC" inlet="Attenuate"/>
+      </net>
+      <net>
+         <source obj="limit_to_25" outlet="o"/>
+         <dest obj="make_0-1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_3" outlet="out"/>
+         <dest obj="and_1" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="uniform_1" outlet="wave"/>
+         <dest obj="bipolar2unipolar_5" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_5" outlet="o"/>
+         <dest obj="latch_1" inlet="i"/>
+      </net>
+      <net>
+         <source obj="latch_1" outlet="o"/>
+         <dest obj="&gt;c_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_1" outlet="o"/>
+         <dest obj="note_6" inlet="g0"/>
+      </net>
+   </nets>
+   <settings>
+      <subpatchmode>no</subpatchmode>
+   </settings>
+   <notes><![CDATA[]]></notes>
+   <windowPos>
+      <x>4</x>
+      <y>22</y>
+      <width>1916</width>
+      <height>1178</height>
+   </windowPos>
+</patch-1.0>
