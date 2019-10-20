@@ -26,20 +26,20 @@ Flicking the joystick down will constantly randomize the CCs of the current trac
 
 The currently selected track's CC data is also sent on CC10.
 
-A a four-step CC sequence is sent on CC5, which can be set by the four step knobs (see _TTNM-VLK_RandomSeq_Info.jpg_).
+A a four-step CC sequence is sent on CC5, which can be set with the four step knobs (see _TTNM-VLK_RandomSeq_Info.jpg_).
 
-Button S1 on the Axoloti switches between internal clock or external clock, which can be both MIDI clock sent to the DIN port and analog clock pulses sent into the left (tip) audio input. Both clock signals are combined, which can get fun.
+Button S1 on the Axoloti switches between the internal clock LFO or an external clock, which can be both MIDI clock sent to the DIN port and analog clock pulses sent into the left (tip) audio input. Both clock signals are combined, which can get weird :D
 
-There is also a gate sequencer built-in sending note-on/off data for specific MIDI notes:
-- Note numbers 30 to 34: clock divisions of internal or external clock
+There is also a gate sequencer built in, sending note-on/off data for specific MIDI notes:
+- Note numbers 30 to 34: clock divisions of the internal or external clock
 - Note number 35: 50/50 chance random gates
 
 All MIDI data is sent from the DIN port on channel 1.
 
 The audio output is also used:
-- Left: Sine wave with frequencies set by the currently sleected track's CC data
-- Right: Sine wave with frequncies set by the four-step sequencer's CC data
-Use this for example as a non-musical FM source.
+- Left channel: Sine wave with frequencies set by the currently sleected track's CC data
+- Right channel: Sine wave with frequencies set by the four-step sequencer's CC data
+Use this as a non-musical FM source, for example.
 
 Again, check the project file. It has a lot of comments.
 
