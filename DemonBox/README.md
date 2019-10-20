@@ -9,7 +9,7 @@ License: CC-BY-NC-SA
 - _TTNM_DemonBox_NanoKontrol_Photo.png:_ Photo of the nanoKONTROL2
 
 #### Description:
-This is a crazy but playable noise and drone synth, generating harsh sound scapes qhich can be used as foreground or background textures in a performance.
+This is a crazy but playable noise and drone synth, generating harsh sound scapes which can be used as foreground or background textures in a performance.
 
 It requires a [Korg nanoKONTROL2](https://www.korg.com/us/products/computergear/nanokontrol2/) USB-MIDI controller to work as it is.
 
