@@ -1,0 +1,3549 @@
+<patch-1.0 appVersion="1.0.12">
+   <comment type="patch/comment" x="42" y="42" text="Drum Sample Sequencer by The Tuesday Night Machines"/>
+   <comment type="patch/comment" x="42" y="56" text="nightmachines.tv/youtube"/>
+   <comment type="patch/comment" x="42" y="70" text="hello@nightmachines.tv"/>
+   <comment type="patch/comment" x="42" y="98" text="License: CC-BY-NC-SA"/>
+   <comment type="patch/comment" x="42" y="126" text="https://github.com/TuesdayNightMachines/Axoloti"/>
+   <comment type="patch/comment" x="770" y="126" text="master fader"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_13" x="770" y="140">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="69"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_17" x="854" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_7" x="910" y="140">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_masterfader"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_10" x="1050" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_7" x="1106" y="140">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_8" x="1232" y="140">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/alloc 8b" uuid="9a8785a40e0aebb9cc22af09b0a7cf5f91ad2c64" name="table_01" x="378" y="154">
+      <params/>
+      <attribs>
+         <combo attributeName="size" selection="8"/>
+         <text attributeName="init">
+            <sText><![CDATA[array[0] = 1;
+array[1] = 2;
+array[2] = 4;
+array[3] = 8;
+array[4] = 16;
+array[5] = 32;
+array[6] = 64;
+array[7] = 64; //not used because knob CW mutes]]></sText>
+         </text>
+      </attribs>
+   </obj>
+   <obj type="table/alloc 8b" uuid="9a8785a40e0aebb9cc22af09b0a7cf5f91ad2c64" name="table_02" x="476" y="154">
+      <params/>
+      <attribs>
+         <combo attributeName="size" selection="8"/>
+         <text attributeName="init">
+            <sText><![CDATA[array[0] = 3;
+array[1] = 6;
+array[2] = 12;
+array[3] = 15;
+array[4] = 18;
+array[5] = 20;
+array[6] = 24;
+array[7] = 24; //not used because knob CW mutes
+]]></sText>
+         </text>
+      </attribs>
+   </obj>
+   <obj type="table/alloc 8b" uuid="9a8785a40e0aebb9cc22af09b0a7cf5f91ad2c64" name="table_shift" x="574" y="154">
+      <params/>
+      <attribs>
+         <combo attributeName="size" selection="4"/>
+         <text attributeName="init">
+            <sText><![CDATA[array[0] = 0;
+array[1] = 2;
+array[2] = 4;
+array[3] = 6;
+]]></sText>
+         </text>
+      </attribs>
+   </obj>
+   <obj type="table/alloc 8b" uuid="9a8785a40e0aebb9cc22af09b0a7cf5f91ad2c64" name="table_masterfader" x="672" y="154">
+      <params/>
+      <attribs>
+         <combo attributeName="size" selection="4"/>
+         <text attributeName="init">
+            <sText><![CDATA[array[0] = 8;
+array[1] = 4;
+array[2] = 2;
+array[3] = 1;
+]]></sText>
+         </text>
+      </attribs>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_16" x="1064" y="182">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_7" x="966" y="210">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1134" y="210" text="blink BANK RIGHT LED in sync"/>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_18" x="1134" y="224">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-38"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_8" x="1218" y="224">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="midi/in/clock" uuid="f1aa3a79d6de9bd6d38dc64c9d4bb5c9de4f4198" name="clock_1" x="266" y="252">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_7" x="1134" y="280">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="96e39ae624c3f3c952cec4a95e1986ee0104f718" name="change_6" x="406" y="294">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="658" y="406" text="distribution only"/>
+   <obj type="logic/counter" uuid="7a141ba82230e54e5f5cd12da5dbe5a74ba854a5" name="counter_2" x="574" y="420">
+      <params>
+         <int32 name="maximum" value="1024"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_9" x="658" y="420">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="96e39ae624c3f3c952cec4a95e1986ee0104f718" name="change_1" x="770" y="420">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/counter" uuid="7a141ba82230e54e5f5cd12da5dbe5a74ba854a5" name="counter_1" x="406" y="434">
+      <params>
+         <int32 name="maximum" value="3"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_1" x="602" y="532">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="224" y="686" text="read clock division factor"/>
+   <comment type="patch/comment" x="728" y="686" text="if knob full CW turn off triggers"/>
+   <comment type="patch/comment" x="1526" y="686" text="read clock division factor"/>
+   <comment type="patch/comment" x="1722" y="686" text="if knob full CW turn off triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_1" x="56" y="700">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="1"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_1" x="224" y="700">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_01"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_4" x="350" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_1" x="420" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_2" x="546" y="700">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_1" x="658" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_7" x="728" y="700">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_7" x="784" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_26" x="1358" y="700">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="5"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_15" x="1526" y="700">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_01"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_18" x="1652" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_11" x="1722" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_12" x="1848" y="700">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_27" x="1960" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_16" x="2030" y="700">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_16" x="2086" y="700">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_8" x="364" y="742">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_32" x="1666" y="742">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_1" x="280" y="770">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_15" x="1582" y="770">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="882" y="798" text="combine triggers from different dividsions"/>
+   <comment type="patch/comment" x="2184" y="798" text="combine triggers from different dividsions"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_2" x="56" y="812">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="11"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_2" x="224" y="812">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_02"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_5" x="350" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_2" x="420" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_3" x="546" y="812">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_2" x="658" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_8" x="728" y="812">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_8" x="784" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_1" x="882" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_27" x="1358" y="812">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="15"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_16" x="1526" y="812">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_02"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_19" x="1652" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_12" x="1722" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_13" x="1848" y="812">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_28" x="1960" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_17" x="2030" y="812">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_17" x="2086" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_13" x="2184" y="812">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_12" x="364" y="854">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_33" x="1666" y="854">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_6" x="882" y="868">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_29" x="2184" y="868">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_2" x="280" y="882">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_16" x="1582" y="882">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="546" y="910" text="only distribution"/>
+   <comment type="patch/comment" x="224" y="924" text="shift pattern"/>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_1" x="448" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_12" x="546" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_3" x="882" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1526" y="924" text="shift pattern"/>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_5" x="1736" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_14" x="1820" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_15" x="2184" y="924">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_3" x="56" y="938">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="21"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_9" x="224" y="938">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_shift"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_12" x="350" y="938">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_28" x="1358" y="938">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="25"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_17" x="1526" y="938">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_shift"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_20" x="1652" y="938">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_20" x="364" y="980">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_14" x="882" y="980">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_34" x="1666" y="980">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_30" x="2184" y="980">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_9" x="280" y="1008">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_17" x="1582" y="1008">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="1050" text="mute above triggers"/>
+   <comment type="patch/comment" x="308" y="1050" text="led control"/>
+   <comment type="patch/comment" x="1372" y="1050" text="mute above triggers"/>
+   <comment type="patch/comment" x="1610" y="1050" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_6" x="56" y="1064">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="31"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_2" x="140" y="1064">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_3" x="196" y="1064">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_4" x="308" y="1064">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-63"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_1" x="392" y="1064">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_29" x="1358" y="1064">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="35"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_9" x="1442" y="1064">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_10" x="1498" y="1064">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_35" x="1610" y="1064">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-51"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_16" x="1694" y="1064">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_2" x="308" y="1120">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_12" x="1610" y="1120">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="1162" text="mute random  triggers"/>
+   <comment type="patch/comment" x="308" y="1162" text="led control"/>
+   <comment type="patch/comment" x="1372" y="1162" text="mute random  triggers"/>
+   <comment type="patch/comment" x="1610" y="1162" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_5" x="56" y="1176">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="51"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_1" x="140" y="1176">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_2" x="196" y="1176">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_5" x="308" y="1176">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-61"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_2" x="392" y="1176">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_30" x="1358" y="1176">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="55"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_10" x="1442" y="1176">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_11" x="1498" y="1176">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_37" x="1610" y="1176">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-49"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_17" x="1694" y="1176">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_3" x="308" y="1232">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_13" x="1610" y="1232">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="1274" text="chance for random  triggers"/>
+   <comment type="patch/comment" x="1372" y="1274" text="change for random  triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_4" x="56" y="1288">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="61"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rand/uniform f trig" uuid="223873125a332e3b8a82795a3eef167993adb086" name="uniform_1" x="140" y="1288">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_31" x="1358" y="1288">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="65"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rand/uniform f trig" uuid="223873125a332e3b8a82795a3eef167993adb086" name="uniform_5" x="1442" y="1288">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_31" x="1708" y="1288">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_1" x="280" y="1302">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_4" x="350" y="1302">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_5" x="448" y="1302">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_5" x="1582" y="1302">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_32" x="1652" y="1302">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_1" x="140" y="1330">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_5" x="1442" y="1330">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="224" y="1428" text="read clock division factor"/>
+   <comment type="patch/comment" x="560" y="1428" text="if knob full CW turn off triggers"/>
+   <comment type="patch/comment" x="1526" y="1428" text="read clock division factor"/>
+   <comment type="patch/comment" x="1722" y="1428" text="if knob full CW turn off triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_7" x="56" y="1442">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="2"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_4" x="224" y="1442">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_01"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_7" x="350" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_4" x="420" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_5" x="546" y="1442">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_7" x="658" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_10" x="728" y="1442">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_10" x="784" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_32" x="1358" y="1442">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="6"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_18" x="1526" y="1442">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_01"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_21" x="1652" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_13" x="1722" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_14" x="1848" y="1442">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_33" x="1960" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_18" x="2030" y="1442">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_18" x="2086" y="1442">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_9" x="364" y="1484">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_38" x="1666" y="1484">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_4" x="280" y="1512">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_18" x="1582" y="1512">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="882" y="1540" text="combine triggers from different dividsions"/>
+   <comment type="patch/comment" x="2184" y="1540" text="combine triggers from different dividsions"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_8" x="56" y="1554">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="12"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_5" x="224" y="1554">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_02"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_8" x="350" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_5" x="420" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_6" x="546" y="1554">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_8" x="658" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_11" x="728" y="1554">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_11" x="784" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_4" x="882" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_33" x="1358" y="1554">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="16"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_19" x="1526" y="1554">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_02"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_22" x="1652" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_14" x="1722" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_15" x="1848" y="1554">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_34" x="1960" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_19" x="2030" y="1554">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_19" x="2086" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_16" x="2184" y="1554">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_14" x="364" y="1596">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_39" x="1666" y="1596">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_10" x="882" y="1610">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_35" x="2184" y="1610">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_5" x="280" y="1624">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_19" x="1582" y="1624">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="546" y="1652" text="only distribution"/>
+   <comment type="patch/comment" x="224" y="1666" text="shift pattern"/>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_2" x="448" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_11" x="546" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_6" x="882" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1526" y="1666" text="shift pattern"/>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_6" x="1736" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_17" x="1820" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_18" x="2184" y="1666">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_9" x="56" y="1680">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="22"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_8" x="224" y="1680">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_shift"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_11" x="350" y="1680">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_34" x="1358" y="1680">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="26"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_20" x="1526" y="1680">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_shift"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_23" x="1652" y="1680">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_19" x="364" y="1722">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_13" x="882" y="1722">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_40" x="1666" y="1722">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_36" x="2184" y="1722">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_8" x="280" y="1750">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_20" x="1582" y="1750">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="1792" text="mute above triggers"/>
+   <comment type="patch/comment" x="308" y="1792" text="led control"/>
+   <comment type="patch/comment" x="1372" y="1792" text="mute above triggers"/>
+   <comment type="patch/comment" x="1610" y="1792" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_10" x="56" y="1806">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="32"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_3" x="140" y="1806">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_4" x="196" y="1806">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_6" x="308" y="1806">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-60"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_3" x="392" y="1806">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_35" x="1358" y="1806">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="36"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_11" x="1442" y="1806">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_12" x="1498" y="1806">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_41" x="1610" y="1806">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-48"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_19" x="1694" y="1806">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_4" x="308" y="1862">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_14" x="1610" y="1862">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="1904" text="mute random  triggers"/>
+   <comment type="patch/comment" x="308" y="1904" text="led control"/>
+   <comment type="patch/comment" x="1372" y="1904" text="mute random  triggers"/>
+   <comment type="patch/comment" x="1610" y="1904" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_11" x="56" y="1918">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="52"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_4" x="140" y="1918">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_5" x="196" y="1918">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_7" x="308" y="1918">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-58"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_4" x="392" y="1918">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_36" x="1358" y="1918">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="56"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_12" x="1442" y="1918">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_13" x="1498" y="1918">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_43" x="1610" y="1918">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-46"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_20" x="1694" y="1918">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_5" x="308" y="1974">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_15" x="1610" y="1974">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="2016" text="change for random  triggers"/>
+   <comment type="patch/comment" x="1372" y="2016" text="change for random  triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_12" x="56" y="2030">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="62"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rand/uniform f trig" uuid="223873125a332e3b8a82795a3eef167993adb086" name="uniform_2" x="140" y="2030">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_11" x="406" y="2030">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_37" x="1358" y="2030">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="66"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rand/uniform f trig" uuid="223873125a332e3b8a82795a3eef167993adb086" name="uniform_6" x="1442" y="2030">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_37" x="1708" y="2030">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_2" x="280" y="2044">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_12" x="350" y="2044">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_6" x="1582" y="2044">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_38" x="1652" y="2044">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_2" x="140" y="2072">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_6" x="1442" y="2072">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1358" y="2156" text="sample choice 1"/>
+   <comment type="patch/comment" x="70" y="2170" text="read clock division factor"/>
+   <comment type="patch/comment" x="406" y="2170" text="if knob full CW turn off triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_38" x="1358" y="2170">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="7"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_21" x="1442" y="2170">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="TSG/math/map" uuid="e93b4617-4075-4591-b602-3e1fc252e881" name="map_2" x="1512" y="2170">
+      <params>
+         <frac32.u.map name="a" value="0.0"/>
+         <frac32.u.map name="b" value="4.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_1" x="1596" y="2170">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_14" x="56" y="2184">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="3"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_6" x="224" y="2184">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_01"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_9" x="350" y="2184">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_6" x="420" y="2184">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_7" x="546" y="2184">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_9" x="658" y="2184">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_12" x="728" y="2184">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_12" x="784" y="2184">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_13" x="364" y="2226">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_6" x="280" y="2254">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="882" y="2282" text="combine triggers from different dividsions"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_15" x="56" y="2296">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="13"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_10" x="224" y="2296">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_02"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_13" x="350" y="2296">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_8" x="420" y="2296">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_9" x="546" y="2296">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_16" x="658" y="2296">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_13" x="728" y="2296">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_13" x="784" y="2296">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_5" x="882" y="2296">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1358" y="2296" text="sample choice 3"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_39" x="1358" y="2310">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="17"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_22" x="1442" y="2310">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="TSG/math/map" uuid="e93b4617-4075-4591-b602-3e1fc252e881" name="map_3" x="1512" y="2310">
+      <params>
+         <frac32.u.map name="a" value="0.0"/>
+         <frac32.u.map name="b" value="4.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_2" x="1596" y="2310">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_15" x="364" y="2338">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_17" x="882" y="2352">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_10" x="280" y="2366">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="224" y="2408" text="shift pattern"/>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_3" x="448" y="2408">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_10" x="560" y="2408">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_7" x="882" y="2408">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_16" x="56" y="2422">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="23"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_11" x="224" y="2422">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_shift"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_14" x="350" y="2422">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_21" x="364" y="2464">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_18" x="882" y="2464">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_11" x="280" y="2492">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1358" y="2492" text="sample choice 5"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_40" x="1358" y="2506">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="27"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="disp/dial p" uuid="44fd18b562e434b3230441681132dbeabb15cdc5" name="dial_23" x="1442" y="2506">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="TSG/math/map" uuid="e93b4617-4075-4591-b602-3e1fc252e881" name="map_7" x="1512" y="2506">
+      <params>
+         <frac32.u.map name="a" value="0.0"/>
+         <frac32.u.map name="b" value="4.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_25" x="1596" y="2506">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="2534" text="mute above triggers"/>
+   <comment type="patch/comment" x="308" y="2534" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_17" x="56" y="2548">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="33"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_5" x="140" y="2548">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_6" x="196" y="2548">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_22" x="308" y="2548">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-57"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_10" x="392" y="2548">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_8" x="308" y="2604">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="2646" text="mute random  triggers"/>
+   <comment type="patch/comment" x="308" y="2646" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_18" x="56" y="2660">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="53"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_6" x="140" y="2660">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_7" x="196" y="2660">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_24" x="308" y="2660">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-55"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_11" x="392" y="2660">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_9" x="308" y="2716">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="2758" text="change for random  triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_19" x="56" y="2772">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="63"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rand/uniform f trig" uuid="223873125a332e3b8a82795a3eef167993adb086" name="uniform_3" x="140" y="2772">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_19" x="406" y="2772">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_3" x="280" y="2786">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_20" x="350" y="2786">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_3" x="140" y="2814">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="224" y="2898" text="read clock division factor"/>
+   <comment type="patch/comment" x="420" y="2898" text="if knob full CW turn off triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_20" x="56" y="2912">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="4"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_12" x="224" y="2912">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_01"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_15" x="350" y="2912">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_9" x="420" y="2912">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_10" x="546" y="2912">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_21" x="658" y="2912">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_14" x="728" y="2912">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_14" x="784" y="2912">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_26" x="364" y="2954">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_12" x="280" y="2982">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="882" y="3010" text="combine triggers from different dividsions"/>
+   <comment type="patch/comment" x="1358" y="3010" text="sample choice 2"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_21" x="56" y="3024">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="14"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_13" x="224" y="3024">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_02"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_16" x="350" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/math/divremc" uuid="1638b705-df81-436f-acf6-3399bf364363" name="divremc_10" x="420" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="drj/math/== const i" uuid="36ae23539d64bc2fb798a1b4a65cf9dda17a1952" name="==_11" x="546" y="3024">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_22" x="658" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&lt;c" uuid="852c84e7bd967ee4a44cc553fcf6e3fc9d8b92c4" name="&lt;c_15" x="728" y="3024">
+      <params>
+         <frac32.u.map name="c" value="63.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/and 2" uuid="c67031682f552aa0a80b23377495c51ea28a8c9c" name="and_15" x="784" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_8" x="882" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_44" x="1358" y="3024">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="8"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="TSG/math/map" uuid="e93b4617-4075-4591-b602-3e1fc252e881" name="map_4" x="1512" y="3024">
+      <params>
+         <frac32.u.map name="a" value="0.0"/>
+         <frac32.u.map name="b" value="4.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_3" x="1596" y="3024">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_27" x="364" y="3066">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_23" x="882" y="3080">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_13" x="280" y="3094">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="224" y="3136" text="shift pattern"/>
+   <obj type="math/+" uuid="b94a9b8e9adcb7d18868c0ee808a9b211b65578d" name="+_4" x="434" y="3136">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_2" x="518" y="3136">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/or 2" uuid="3805d3c84d30032a44fbdbe42d9a2988a1790a3e" name="or_9" x="882" y="3136">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_22" x="56" y="3150">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="24"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="table/read" uuid="1b71321dfa426c1cfed179d8ade93a69da0c5f2d" name="read_14" x="224" y="3150">
+      <params/>
+      <attribs>
+         <objref attributeName="table" obj="table_shift"/>
+      </attribs>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_17" x="350" y="3150">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1358" y="3150" text="sample choice 4"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_45" x="1358" y="3164">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="18"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="TSG/math/map" uuid="e93b4617-4075-4591-b602-3e1fc252e881" name="map_5" x="1512" y="3164">
+      <params>
+         <frac32.u.map name="a" value="0.0"/>
+         <frac32.u.map name="b" value="4.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_6" x="1596" y="3164">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="disp/i" uuid="5e35fd0c62d81e70017289250cf28edd26e19e4a" name="i_28" x="364" y="3192">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_24" x="882" y="3192">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/muls 2" uuid="e6a3d49dd255fdecb3dca9c7fa75b9a95ecfd7fd" name="muls_14" x="280" y="3220">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="3262" text="mute above triggers"/>
+   <comment type="patch/comment" x="308" y="3262" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_23" x="56" y="3276">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="34"/>
+         <spinner attributeName="default" value="127"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_7" x="140" y="3276">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_8" x="196" y="3276">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_29" x="308" y="3276">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-54"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_13" x="392" y="3276">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_10" x="308" y="3332">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="3374" text="mute random  triggers"/>
+   <comment type="patch/comment" x="308" y="3374" text="led control"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_24" x="56" y="3388">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="54"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="math/&gt;c" uuid="99f2934d97d62b715a829979ef6c8abef35dcdb2" name="&gt;c_8" x="140" y="3388">
+      <params>
+         <frac32.u.map name="c" value="32.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="logic/toggle" uuid="f42f0d3aab552c17bc78b9e65f85dc24f977503d" name="toggle_9" x="196" y="3388">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="const/i" uuid="e202f44b2df17ae0b3e663b98ea6b14c8ff00408" name="i_31" x="308" y="3388">
+      <params/>
+      <attribs>
+         <spinner attributeName="value" value="-52"/>
+      </attribs>
+   </obj>
+   <obj type="midi/out/note" uuid="a76ae870da278cbbce5501a57ce7bd0e0ea4215c" name="note_14" x="392" y="3388">
+      <params/>
+      <attribs>
+         <combo attributeName="device" selection="usb host port 1"/>
+         <spinner attributeName="channel" value="1"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_11" x="308" y="3444">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="70" y="3486" text="change for random  triggers"/>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_25" x="56" y="3500">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="64"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <obj type="rand/uniform f trig" uuid="223873125a332e3b8a82795a3eef167993adb086" name="uniform_4" x="140" y="3500">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_25" x="406" y="3500">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/&gt;" uuid="8112942c245dbc2edf7d7de122fe83b0dcd0a391" name="&gt;_4" x="280" y="3514">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_26" x="350" y="3514">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="conv/bipolar2unipolar" uuid="f6f63d71053d572d3c795f83c7ec11dfbbce82dd" name="bipolar2unipolar_4" x="140" y="3542">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="1358" y="3542" text="sample choice 6"/>
+   <obj type="TSG/math/map" uuid="e93b4617-4075-4591-b602-3e1fc252e881" name="map_6" x="1484" y="3542">
+      <params>
+         <frac32.u.map name="a" value="0.0"/>
+         <frac32.u.map name="b" value="4.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="conv/to i" uuid="305966430ee86b5c3b8e18cde0c721657c558a87" name="to_24" x="1568" y="3542">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="midi/in/cc" uuid="6096d217701cbdf251a9ab6ba029af78c5722a56" name="cc_46" x="1358" y="3556">
+      <params/>
+      <attribs>
+         <spinner attributeName="cc" value="28"/>
+         <spinner attributeName="default" value="0"/>
+      </attribs>
+   </obj>
+   <comment type="patch/comment" x="1358" y="3654" text="hold BANK RIGHT for BPM change"/>
+   <obj type="midi/in/keyb note" uuid="ac0cd98e6c0373b7be73d25900342a62ebcf5f" name="keyb_1" x="1358" y="3668">
+      <params/>
+      <attribs>
+         <spinner attributeName="note" value="26"/>
+      </attribs>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_28" x="1512" y="3682">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="math/*" uuid="922423f2db9f222aa3e5ba095778288c446da47a" name="*_3" x="1722" y="3682">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="logic/change" uuid="42071f8cb4cfe1f35956c0bd5a313a57e049bec4" name="change_29" x="1806" y="3682">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="patch/modsource" uuid="c98f018a8d204ef6df1bf7008af6fd7d20f12fe4" name="modsrc_bpm" x="1918" y="3682">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="mix/mix 6 g" uuid="2dd642dee5072357722740c850699b79b8da3008" name="mix_1" x="1078" y="3836">
+      <params>
+         <frac32.u.map name="gain1" value="64.0"/>
+         <frac32.u.map name="gain2" value="64.0"/>
+         <frac32.u.map name="gain3" value="38.5"/>
+         <frac32.u.map name="gain4" value="47.0"/>
+         <frac32.u.map name="gain5" value="41.0"/>
+         <frac32.u.map name="gain6" value="34.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="filter/lp m" uuid="1aa1bc51da479ed92429af700591f9d7b9f45f22" name="lp_1" x="1218" y="3864">
+      <params>
+         <frac32.s.map name="pitch" MidiCC="68" value="63.99999952316284"/>
+         <frac32.u.map name="reso" value="0.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="audio/out stereo" uuid="a1ca7a567f535acc21055669829101d3ee7f0189" name="out_1" x="1582" y="3878">
+      <params/>
+      <attribs/>
+   </obj>
+   <comment type="patch/comment" x="182" y="3934" text="Instead of playing samples, you could also add MIDI note outputs here, to sequence external gear"/>
+   <obj type="wave/play" uuid="2e6265136dbaaf4d885a669520546de2e3306819" name="play_2" x="14" y="3976">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="wave/play" uuid="2e6265136dbaaf4d885a669520546de2e3306819" name="play_3" x="196" y="3976">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="wave/play" uuid="2e6265136dbaaf4d885a669520546de2e3306819" name="play_4" x="378" y="3976">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="wave/play" uuid="2e6265136dbaaf4d885a669520546de2e3306819" name="play_5" x="560" y="3976">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="wave/play" uuid="2e6265136dbaaf4d885a669520546de2e3306819" name="play_6" x="742" y="3976">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="wave/play" uuid="2e6265136dbaaf4d885a669520546de2e3306819" name="play_7" x="924" y="3976">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="ctrl/dial p" uuid="cc5d2846c3d50e425f450c4b9851371b54f4d674" name="dial_1" x="1456" y="3976">
+      <params>
+         <frac32.u.map name="value" MidiCC="67" value="0.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="mux/mux 4" uuid="4629dfad262ff68419d12ab3fcd96e5e2e9f4190" name="mux_1" x="14" y="4074">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="mux/mux 4" uuid="4629dfad262ff68419d12ab3fcd96e5e2e9f4190" name="mux_2" x="196" y="4074">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="mux/mux 4" uuid="4629dfad262ff68419d12ab3fcd96e5e2e9f4190" name="mux_3" x="378" y="4074">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="mux/mux 4" uuid="4629dfad262ff68419d12ab3fcd96e5e2e9f4190" name="mux_4" x="560" y="4074">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="mux/mux 4" uuid="4629dfad262ff68419d12ab3fcd96e5e2e9f4190" name="mux_5" x="742" y="4074">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="mux/mux 4" uuid="4629dfad262ff68419d12ab3fcd96e5e2e9f4190" name="mux_6" x="924" y="4074">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="sss/dist/starver" uuid="960582bd-3e41-4220-9b17-7ebc5aa0f5bf" name="starver_1" x="1260" y="4088">
+      <params>
+         <frac32.s.map name="mod1" value="64.0"/>
+         <frac32.s.map name="damp" value="64.0"/>
+         <frac32.u.map name="rate" value="64.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="mix/xfade" uuid="375dc91d218e96cdc9cbc7e92adb48f705ef701a" name="xfade_1" x="1512" y="4144">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_1" x="14" y="4186">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s11.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_2" x="196" y="4186">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s21.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_3" x="378" y="4186">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s31.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_4" x="560" y="4186">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s41.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_5" x="742" y="4186">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s51.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_6" x="924" y="4186">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s61.raw"/>
+      </attribs>
+   </obj>
+   <obj type="mix/mix 1 g" uuid="e6982841c1bf323ee2062a4b6cc2737adafbd668" name="mix_2" x="1386" y="4200">
+      <params>
+         <frac32.u.map name="gain1" value="37.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_7" x="14" y="4256">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s12.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_10" x="196" y="4256">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s22.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_13" x="378" y="4256">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s32.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_16" x="560" y="4256">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s42.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_19" x="742" y="4256">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s52.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_22" x="924" y="4256">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s62.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_8" x="14" y="4326">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s13.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_11" x="196" y="4326">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s23.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_14" x="378" y="4326">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s33.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_17" x="560" y="4326">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s43.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_20" x="742" y="4326">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s53.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_23" x="924" y="4326">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s63.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_9" x="14" y="4396">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s14.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_12" x="196" y="4396">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s24.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_15" x="378" y="4396">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s34.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_18" x="560" y="4396">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s44.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_21" x="742" y="4396">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s54.raw"/>
+      </attribs>
+   </obj>
+   <obj type="string/c" uuid="4aa90a90c435a742ddfa152d232883fc5b2f1b3" name="c_24" x="924" y="4396">
+      <params/>
+      <attribs>
+         <table attributeName="str" table="/samples/s64.raw"/>
+      </attribs>
+   </obj>
+   <nets>
+      <net>
+         <source obj="+_9" outlet="out"/>
+         <dest obj="change_1" inlet="in"/>
+         <dest obj="divremc_7" inlet="a"/>
+         <dest obj="+_1" inlet="in1"/>
+         <dest obj="+_2" inlet="in1"/>
+         <dest obj="+_3" inlet="in1"/>
+         <dest obj="+_4" inlet="in1"/>
+         <dest obj="+_5" inlet="in1"/>
+         <dest obj="+_6" inlet="in1"/>
+         <dest obj="i_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_1" outlet="trig"/>
+         <dest obj="or_2" inlet="i1"/>
+         <dest obj="or_10" inlet="i1"/>
+         <dest obj="or_11" inlet="i1"/>
+         <dest obj="or_12" inlet="i1"/>
+         <dest obj="or_14" inlet="i1"/>
+         <dest obj="or_17" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="and_7" outlet="o"/>
+         <dest obj="or_1" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="cc_1" outlet="midiCC"/>
+         <dest obj="&lt;c_7" inlet="in"/>
+         <dest obj="read_1" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_7" outlet="out"/>
+         <dest obj="and_7" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_1" outlet="o"/>
+         <dest obj="muls_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_1" outlet="rem"/>
+         <dest obj="==_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="==_2" outlet="out"/>
+         <dest obj="*_1" inlet="b"/>
+      </net>
+      <net>
+         <source obj="to_5" outlet="o"/>
+         <dest obj="i_12" inlet="in"/>
+         <dest obj="divremc_2" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_2" outlet="midiCC"/>
+         <dest obj="&lt;c_8" inlet="in"/>
+         <dest obj="read_2" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_8" outlet="out"/>
+         <dest obj="and_8" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_2" outlet="o"/>
+         <dest obj="muls_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_2" outlet="rem"/>
+         <dest obj="==_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_8" outlet="o"/>
+         <dest obj="or_1" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_1" outlet="result"/>
+         <dest obj="and_7" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_2" outlet="result"/>
+         <dest obj="and_8" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="==_3" outlet="out"/>
+         <dest obj="*_2" inlet="b"/>
+      </net>
+      <net>
+         <source obj="muls_1" outlet="out"/>
+         <dest obj="to_4" inlet="i"/>
+         <dest obj="i_8" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_2" outlet="out"/>
+         <dest obj="to_5" inlet="i"/>
+      </net>
+      <net>
+         <source obj="cc_4" outlet="midiCC"/>
+         <dest obj="&gt;_1" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="uniform_1" outlet="rand"/>
+         <dest obj="bipolar2unipolar_1" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_1" outlet="o"/>
+         <dest obj="&gt;_1" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_1" outlet="out"/>
+         <dest obj="*_4" inlet="b"/>
+      </net>
+      <net>
+         <source obj="cc_5" outlet="midiCC"/>
+         <dest obj="&gt;c_1" inlet="in"/>
+         <dest obj="change_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_1" outlet="out"/>
+         <dest obj="toggle_2" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_2" outlet="o"/>
+         <dest obj="note_2" inlet="velo"/>
+         <dest obj="*_5" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_4" outlet="result"/>
+         <dest obj="*_5" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_5" outlet="result"/>
+         <dest obj="or_3" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="&gt;c_2" outlet="out"/>
+         <dest obj="toggle_3" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_3" outlet="o"/>
+         <dest obj="*_6" inlet="b"/>
+         <dest obj="note_1" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_6" outlet="result"/>
+         <dest obj="or_3" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="or_3" outlet="o"/>
+         <dest obj="*_14" inlet="a"/>
+      </net>
+      <net>
+         <source obj="i_4" outlet="out"/>
+         <dest obj="note_1" inlet="note"/>
+      </net>
+      <net>
+         <source obj="cc_6" outlet="midiCC"/>
+         <dest obj="&gt;c_2" inlet="in"/>
+         <dest obj="change_2" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_2" outlet="trig"/>
+         <dest obj="note_1" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="i_5" outlet="out"/>
+         <dest obj="note_2" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_3" outlet="trig"/>
+         <dest obj="note_2" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="and_10" outlet="o"/>
+         <dest obj="or_4" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="to_7" outlet="o"/>
+         <dest obj="i_9" inlet="in"/>
+         <dest obj="divremc_4" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_7" outlet="midiCC"/>
+         <dest obj="&lt;c_10" inlet="in"/>
+         <dest obj="read_4" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_10" outlet="out"/>
+         <dest obj="and_10" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_4" outlet="o"/>
+         <dest obj="muls_4" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_4" outlet="rem"/>
+         <dest obj="==_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="==_5" outlet="out"/>
+         <dest obj="*_7" inlet="b"/>
+      </net>
+      <net>
+         <source obj="to_8" outlet="o"/>
+         <dest obj="i_14" inlet="in"/>
+         <dest obj="divremc_5" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_8" outlet="midiCC"/>
+         <dest obj="&lt;c_11" inlet="in"/>
+         <dest obj="read_5" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_11" outlet="out"/>
+         <dest obj="and_11" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_5" outlet="o"/>
+         <dest obj="muls_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_5" outlet="rem"/>
+         <dest obj="==_6" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_11" outlet="o"/>
+         <dest obj="or_4" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="cc_9" outlet="midiCC"/>
+         <dest obj="read_8" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_7" outlet="result"/>
+         <dest obj="and_10" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_8" outlet="result"/>
+         <dest obj="and_11" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="==_6" outlet="out"/>
+         <dest obj="*_8" inlet="b"/>
+      </net>
+      <net>
+         <source obj="muls_4" outlet="out"/>
+         <dest obj="to_7" inlet="i"/>
+      </net>
+      <net>
+         <source obj="muls_5" outlet="out"/>
+         <dest obj="to_8" inlet="i"/>
+      </net>
+      <net>
+         <source obj="cc_12" outlet="midiCC"/>
+         <dest obj="&gt;_2" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="uniform_2" outlet="rand"/>
+         <dest obj="bipolar2unipolar_2" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_2" outlet="o"/>
+         <dest obj="&gt;_2" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_2" outlet="out"/>
+         <dest obj="*_12" inlet="b"/>
+      </net>
+      <net>
+         <source obj="cc_11" outlet="midiCC"/>
+         <dest obj="&gt;c_4" inlet="in"/>
+         <dest obj="change_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_4" outlet="out"/>
+         <dest obj="toggle_5" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_5" outlet="o"/>
+         <dest obj="*_11" inlet="a"/>
+         <dest obj="note_4" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_12" outlet="result"/>
+         <dest obj="*_11" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_11" outlet="result"/>
+         <dest obj="or_6" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="&gt;c_3" outlet="out"/>
+         <dest obj="toggle_4" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_4" outlet="o"/>
+         <dest obj="*_10" inlet="b"/>
+         <dest obj="note_3" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_10" outlet="result"/>
+         <dest obj="or_6" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="i_6" outlet="out"/>
+         <dest obj="note_3" inlet="note"/>
+      </net>
+      <net>
+         <source obj="cc_10" outlet="midiCC"/>
+         <dest obj="change_4" inlet="in"/>
+         <dest obj="&gt;c_3" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_4" outlet="trig"/>
+         <dest obj="note_3" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="i_7" outlet="out"/>
+         <dest obj="note_4" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_5" outlet="trig"/>
+         <dest obj="note_4" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="or_6" outlet="o"/>
+         <dest obj="*_13" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_13" outlet="result"/>
+         <dest obj="play_3" inlet="start"/>
+      </net>
+      <net>
+         <source obj="cc_13" outlet="midiCC"/>
+         <dest obj="read_7" inlet="a"/>
+         <dest obj="i_17" inlet="in"/>
+      </net>
+      <net>
+         <source obj="read_7" outlet="o"/>
+         <dest obj="muls_7" inlet="in"/>
+      </net>
+      <net>
+         <source obj="to_10" outlet="o"/>
+         <dest obj="divremc_7" inlet="denominator"/>
+         <dest obj="i_16" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_7" outlet="rem"/>
+         <dest obj="==_8" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_7" outlet="out"/>
+         <dest obj="to_10" inlet="i"/>
+      </net>
+      <net>
+         <source obj="==_8" outlet="out"/>
+         <dest obj="*_14" inlet="b"/>
+         <dest obj="*_13" inlet="b"/>
+         <dest obj="change_7" inlet="in"/>
+         <dest obj="note_8" inlet="velo"/>
+         <dest obj="*_18" inlet="b"/>
+         <dest obj="*_24" inlet="b"/>
+         <dest obj="*_30" inlet="b"/>
+         <dest obj="*_36" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_14" outlet="result"/>
+         <dest obj="play_2" inlet="start"/>
+      </net>
+      <net>
+         <source obj="i_18" outlet="out"/>
+         <dest obj="note_8" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_7" outlet="trig"/>
+         <dest obj="note_8" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="+_1" outlet="out"/>
+         <dest obj="divremc_1" inlet="a"/>
+         <dest obj="divremc_2" inlet="a"/>
+      </net>
+      <net>
+         <source obj="+_2" outlet="out"/>
+         <dest obj="divremc_4" inlet="a"/>
+         <dest obj="divremc_5" inlet="a"/>
+      </net>
+      <net>
+         <source obj="to_11" outlet="o"/>
+         <dest obj="i_19" inlet="in"/>
+         <dest obj="+_2" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="read_8" outlet="o"/>
+         <dest obj="muls_8" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_8" outlet="out"/>
+         <dest obj="to_11" inlet="i"/>
+      </net>
+      <net>
+         <source obj="or_4" outlet="o"/>
+         <dest obj="*_10" inlet="a"/>
+      </net>
+      <net>
+         <source obj="cc_3" outlet="midiCC"/>
+         <dest obj="read_9" inlet="a"/>
+      </net>
+      <net>
+         <source obj="to_12" outlet="o"/>
+         <dest obj="i_20" inlet="in"/>
+         <dest obj="+_1" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="read_9" outlet="o"/>
+         <dest obj="muls_9" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_9" outlet="out"/>
+         <dest obj="to_12" inlet="i"/>
+      </net>
+      <net>
+         <source obj="or_1" outlet="o"/>
+         <dest obj="*_6" inlet="a"/>
+      </net>
+      <net>
+         <source obj="and_12" outlet="o"/>
+         <dest obj="or_5" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="to_9" outlet="o"/>
+         <dest obj="i_13" inlet="in"/>
+         <dest obj="divremc_6" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_14" outlet="midiCC"/>
+         <dest obj="&lt;c_12" inlet="in"/>
+         <dest obj="read_6" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_12" outlet="out"/>
+         <dest obj="and_12" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_6" outlet="o"/>
+         <dest obj="muls_6" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_6" outlet="rem"/>
+         <dest obj="==_7" inlet="in"/>
+      </net>
+      <net>
+         <source obj="==_7" outlet="out"/>
+         <dest obj="*_9" inlet="b"/>
+      </net>
+      <net>
+         <source obj="to_13" outlet="o"/>
+         <dest obj="i_15" inlet="in"/>
+         <dest obj="divremc_8" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_15" outlet="midiCC"/>
+         <dest obj="&lt;c_13" inlet="in"/>
+         <dest obj="read_10" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_13" outlet="out"/>
+         <dest obj="and_13" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_10" outlet="o"/>
+         <dest obj="muls_10" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_8" outlet="rem"/>
+         <dest obj="==_9" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_13" outlet="o"/>
+         <dest obj="or_5" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="cc_16" outlet="midiCC"/>
+         <dest obj="read_11" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_9" outlet="result"/>
+         <dest obj="and_12" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_16" outlet="result"/>
+         <dest obj="and_13" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="==_9" outlet="out"/>
+         <dest obj="*_16" inlet="b"/>
+      </net>
+      <net>
+         <source obj="muls_6" outlet="out"/>
+         <dest obj="to_9" inlet="i"/>
+      </net>
+      <net>
+         <source obj="muls_10" outlet="out"/>
+         <dest obj="to_13" inlet="i"/>
+      </net>
+      <net>
+         <source obj="cc_19" outlet="midiCC"/>
+         <dest obj="&gt;_3" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="uniform_3" outlet="rand"/>
+         <dest obj="bipolar2unipolar_3" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_3" outlet="o"/>
+         <dest obj="&gt;_3" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_3" outlet="out"/>
+         <dest obj="*_20" inlet="b"/>
+      </net>
+      <net>
+         <source obj="cc_18" outlet="midiCC"/>
+         <dest obj="&gt;c_6" inlet="in"/>
+         <dest obj="change_9" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_6" outlet="out"/>
+         <dest obj="toggle_7" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_7" outlet="o"/>
+         <dest obj="*_19" inlet="a"/>
+         <dest obj="note_11" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_20" outlet="result"/>
+         <dest obj="*_19" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_19" outlet="result"/>
+         <dest obj="or_7" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="&gt;c_5" outlet="out"/>
+         <dest obj="toggle_6" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_6" outlet="o"/>
+         <dest obj="*_17" inlet="b"/>
+         <dest obj="note_10" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_17" outlet="result"/>
+         <dest obj="or_7" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="i_22" outlet="out"/>
+         <dest obj="note_10" inlet="note"/>
+      </net>
+      <net>
+         <source obj="cc_17" outlet="midiCC"/>
+         <dest obj="change_8" inlet="in"/>
+         <dest obj="&gt;c_5" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_8" outlet="trig"/>
+         <dest obj="note_10" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="i_24" outlet="out"/>
+         <dest obj="note_11" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_9" outlet="trig"/>
+         <dest obj="note_11" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="or_7" outlet="o"/>
+         <dest obj="*_18" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_18" outlet="result"/>
+         <dest obj="play_4" inlet="start"/>
+      </net>
+      <net>
+         <source obj="+_3" outlet="out"/>
+         <dest obj="divremc_6" inlet="a"/>
+         <dest obj="divremc_8" inlet="a"/>
+      </net>
+      <net>
+         <source obj="to_14" outlet="o"/>
+         <dest obj="i_21" inlet="in"/>
+         <dest obj="+_3" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="read_11" outlet="o"/>
+         <dest obj="muls_11" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_11" outlet="out"/>
+         <dest obj="to_14" inlet="i"/>
+      </net>
+      <net>
+         <source obj="or_5" outlet="o"/>
+         <dest obj="*_17" inlet="a"/>
+      </net>
+      <net>
+         <source obj="or_2" outlet="o"/>
+         <dest obj="*_21" inlet="a"/>
+         <dest obj="*_22" inlet="a"/>
+         <dest obj="*_26" inlet="a"/>
+         <dest obj="uniform_4" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="and_14" outlet="o"/>
+         <dest obj="or_8" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="to_15" outlet="o"/>
+         <dest obj="i_26" inlet="in"/>
+         <dest obj="divremc_9" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_20" outlet="midiCC"/>
+         <dest obj="&lt;c_14" inlet="in"/>
+         <dest obj="read_12" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_14" outlet="out"/>
+         <dest obj="and_14" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_12" outlet="o"/>
+         <dest obj="muls_12" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_9" outlet="rem"/>
+         <dest obj="==_10" inlet="in"/>
+      </net>
+      <net>
+         <source obj="==_10" outlet="out"/>
+         <dest obj="*_21" inlet="b"/>
+      </net>
+      <net>
+         <source obj="to_16" outlet="o"/>
+         <dest obj="i_27" inlet="in"/>
+         <dest obj="divremc_10" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_21" outlet="midiCC"/>
+         <dest obj="&lt;c_15" inlet="in"/>
+         <dest obj="read_13" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_15" outlet="out"/>
+         <dest obj="and_15" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_13" outlet="o"/>
+         <dest obj="muls_13" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_10" outlet="rem"/>
+         <dest obj="==_11" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_15" outlet="o"/>
+         <dest obj="or_8" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="cc_22" outlet="midiCC"/>
+         <dest obj="read_14" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_21" outlet="result"/>
+         <dest obj="and_14" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_22" outlet="result"/>
+         <dest obj="and_15" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="==_11" outlet="out"/>
+         <dest obj="*_22" inlet="b"/>
+      </net>
+      <net>
+         <source obj="muls_12" outlet="out"/>
+         <dest obj="to_15" inlet="i"/>
+      </net>
+      <net>
+         <source obj="muls_13" outlet="out"/>
+         <dest obj="to_16" inlet="i"/>
+      </net>
+      <net>
+         <source obj="cc_25" outlet="midiCC"/>
+         <dest obj="&gt;_4" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="uniform_4" outlet="rand"/>
+         <dest obj="bipolar2unipolar_4" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_4" outlet="o"/>
+         <dest obj="&gt;_4" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_4" outlet="out"/>
+         <dest obj="*_26" inlet="b"/>
+      </net>
+      <net>
+         <source obj="cc_24" outlet="midiCC"/>
+         <dest obj="&gt;c_8" inlet="in"/>
+         <dest obj="change_11" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_8" outlet="out"/>
+         <dest obj="toggle_9" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_9" outlet="o"/>
+         <dest obj="*_25" inlet="a"/>
+         <dest obj="note_14" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_26" outlet="result"/>
+         <dest obj="*_25" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_25" outlet="result"/>
+         <dest obj="or_9" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="&gt;c_7" outlet="out"/>
+         <dest obj="toggle_8" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_8" outlet="o"/>
+         <dest obj="*_23" inlet="b"/>
+         <dest obj="note_13" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_23" outlet="result"/>
+         <dest obj="or_9" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="i_29" outlet="out"/>
+         <dest obj="note_13" inlet="note"/>
+      </net>
+      <net>
+         <source obj="cc_23" outlet="midiCC"/>
+         <dest obj="change_10" inlet="in"/>
+         <dest obj="&gt;c_7" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_10" outlet="trig"/>
+         <dest obj="note_13" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="i_31" outlet="out"/>
+         <dest obj="note_14" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_11" outlet="trig"/>
+         <dest obj="note_14" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="or_9" outlet="o"/>
+         <dest obj="*_24" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_24" outlet="result"/>
+         <dest obj="play_5" inlet="start"/>
+      </net>
+      <net>
+         <source obj="+_4" outlet="out"/>
+         <dest obj="divremc_9" inlet="a"/>
+         <dest obj="divremc_10" inlet="a"/>
+      </net>
+      <net>
+         <source obj="to_17" outlet="o"/>
+         <dest obj="i_28" inlet="in"/>
+         <dest obj="+_4" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="read_14" outlet="o"/>
+         <dest obj="muls_14" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_14" outlet="out"/>
+         <dest obj="to_17" inlet="i"/>
+      </net>
+      <net>
+         <source obj="or_8" outlet="o"/>
+         <dest obj="*_23" inlet="a"/>
+      </net>
+      <net>
+         <source obj="or_10" outlet="o"/>
+         <dest obj="*_9" inlet="a"/>
+         <dest obj="*_16" inlet="a"/>
+         <dest obj="*_20" inlet="a"/>
+         <dest obj="uniform_3" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="or_11" outlet="o"/>
+         <dest obj="*_8" inlet="a"/>
+         <dest obj="*_12" inlet="a"/>
+         <dest obj="uniform_2" inlet="trig"/>
+         <dest obj="*_7" inlet="a"/>
+      </net>
+      <net>
+         <source obj="or_12" outlet="o"/>
+         <dest obj="*_1" inlet="a"/>
+         <dest obj="*_2" inlet="a"/>
+         <dest obj="uniform_1" inlet="trig"/>
+         <dest obj="*_4" inlet="a"/>
+      </net>
+      <net>
+         <source obj="or_14" outlet="o"/>
+         <dest obj="*_27" inlet="a"/>
+         <dest obj="*_28" inlet="a"/>
+         <dest obj="*_32" inlet="a"/>
+         <dest obj="uniform_5" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="and_16" outlet="o"/>
+         <dest obj="or_13" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="to_18" outlet="o"/>
+         <dest obj="i_32" inlet="in"/>
+         <dest obj="divremc_11" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_26" outlet="midiCC"/>
+         <dest obj="&lt;c_16" inlet="in"/>
+         <dest obj="read_15" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_16" outlet="out"/>
+         <dest obj="and_16" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_15" outlet="o"/>
+         <dest obj="muls_15" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_11" outlet="rem"/>
+         <dest obj="==_12" inlet="in"/>
+      </net>
+      <net>
+         <source obj="==_12" outlet="out"/>
+         <dest obj="*_27" inlet="b"/>
+      </net>
+      <net>
+         <source obj="to_19" outlet="o"/>
+         <dest obj="i_33" inlet="in"/>
+         <dest obj="divremc_12" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_27" outlet="midiCC"/>
+         <dest obj="&lt;c_17" inlet="in"/>
+         <dest obj="read_16" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_17" outlet="out"/>
+         <dest obj="and_17" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_16" outlet="o"/>
+         <dest obj="muls_16" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_12" outlet="rem"/>
+         <dest obj="==_13" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_17" outlet="o"/>
+         <dest obj="or_13" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="cc_28" outlet="midiCC"/>
+         <dest obj="read_17" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_27" outlet="result"/>
+         <dest obj="and_16" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_28" outlet="result"/>
+         <dest obj="and_17" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="==_13" outlet="out"/>
+         <dest obj="*_28" inlet="b"/>
+      </net>
+      <net>
+         <source obj="muls_15" outlet="out"/>
+         <dest obj="to_18" inlet="i"/>
+      </net>
+      <net>
+         <source obj="muls_16" outlet="out"/>
+         <dest obj="to_19" inlet="i"/>
+      </net>
+      <net>
+         <source obj="cc_31" outlet="midiCC"/>
+         <dest obj="&gt;_5" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="uniform_5" outlet="rand"/>
+         <dest obj="bipolar2unipolar_5" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_5" outlet="o"/>
+         <dest obj="&gt;_5" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_5" outlet="out"/>
+         <dest obj="*_32" inlet="b"/>
+      </net>
+      <net>
+         <source obj="cc_30" outlet="midiCC"/>
+         <dest obj="&gt;c_10" inlet="in"/>
+         <dest obj="change_13" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_10" outlet="out"/>
+         <dest obj="toggle_11" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_11" outlet="o"/>
+         <dest obj="*_31" inlet="a"/>
+         <dest obj="note_17" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_32" outlet="result"/>
+         <dest obj="*_31" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_31" outlet="result"/>
+         <dest obj="or_15" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="&gt;c_9" outlet="out"/>
+         <dest obj="toggle_10" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_10" outlet="o"/>
+         <dest obj="*_29" inlet="b"/>
+         <dest obj="note_16" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_29" outlet="result"/>
+         <dest obj="or_15" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="i_35" outlet="out"/>
+         <dest obj="note_16" inlet="note"/>
+      </net>
+      <net>
+         <source obj="cc_29" outlet="midiCC"/>
+         <dest obj="change_12" inlet="in"/>
+         <dest obj="&gt;c_9" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_12" outlet="trig"/>
+         <dest obj="note_16" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="i_37" outlet="out"/>
+         <dest obj="note_17" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_13" outlet="trig"/>
+         <dest obj="note_17" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="or_15" outlet="o"/>
+         <dest obj="*_30" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_30" outlet="result"/>
+         <dest obj="play_6" inlet="start"/>
+      </net>
+      <net>
+         <source obj="+_5" outlet="out"/>
+         <dest obj="divremc_11" inlet="a"/>
+         <dest obj="divremc_12" inlet="a"/>
+      </net>
+      <net>
+         <source obj="to_20" outlet="o"/>
+         <dest obj="i_34" inlet="in"/>
+         <dest obj="+_5" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="read_17" outlet="o"/>
+         <dest obj="muls_17" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_17" outlet="out"/>
+         <dest obj="to_20" inlet="i"/>
+      </net>
+      <net>
+         <source obj="or_13" outlet="o"/>
+         <dest obj="*_29" inlet="a"/>
+      </net>
+      <net>
+         <source obj="or_17" outlet="o"/>
+         <dest obj="*_33" inlet="a"/>
+         <dest obj="*_34" inlet="a"/>
+         <dest obj="*_38" inlet="a"/>
+         <dest obj="uniform_6" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="and_18" outlet="o"/>
+         <dest obj="or_16" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="to_21" outlet="o"/>
+         <dest obj="i_38" inlet="in"/>
+         <dest obj="divremc_13" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_32" outlet="midiCC"/>
+         <dest obj="&lt;c_18" inlet="in"/>
+         <dest obj="read_18" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_18" outlet="out"/>
+         <dest obj="and_18" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_18" outlet="o"/>
+         <dest obj="muls_18" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_13" outlet="rem"/>
+         <dest obj="==_14" inlet="in"/>
+      </net>
+      <net>
+         <source obj="==_14" outlet="out"/>
+         <dest obj="*_33" inlet="b"/>
+      </net>
+      <net>
+         <source obj="to_22" outlet="o"/>
+         <dest obj="i_39" inlet="in"/>
+         <dest obj="divremc_14" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="cc_33" outlet="midiCC"/>
+         <dest obj="&lt;c_19" inlet="in"/>
+         <dest obj="read_19" inlet="a"/>
+      </net>
+      <net>
+         <source obj="&lt;c_19" outlet="out"/>
+         <dest obj="and_19" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="read_19" outlet="o"/>
+         <dest obj="muls_19" inlet="in"/>
+      </net>
+      <net>
+         <source obj="divremc_14" outlet="rem"/>
+         <dest obj="==_15" inlet="in"/>
+      </net>
+      <net>
+         <source obj="and_19" outlet="o"/>
+         <dest obj="or_16" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="cc_34" outlet="midiCC"/>
+         <dest obj="read_20" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_33" outlet="result"/>
+         <dest obj="and_18" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="*_34" outlet="result"/>
+         <dest obj="and_19" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="==_15" outlet="out"/>
+         <dest obj="*_34" inlet="b"/>
+      </net>
+      <net>
+         <source obj="muls_18" outlet="out"/>
+         <dest obj="to_21" inlet="i"/>
+      </net>
+      <net>
+         <source obj="muls_19" outlet="out"/>
+         <dest obj="to_22" inlet="i"/>
+      </net>
+      <net>
+         <source obj="cc_37" outlet="midiCC"/>
+         <dest obj="&gt;_6" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="uniform_6" outlet="rand"/>
+         <dest obj="bipolar2unipolar_6" inlet="i"/>
+      </net>
+      <net>
+         <source obj="bipolar2unipolar_6" outlet="o"/>
+         <dest obj="&gt;_6" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="&gt;_6" outlet="out"/>
+         <dest obj="*_38" inlet="b"/>
+      </net>
+      <net>
+         <source obj="cc_36" outlet="midiCC"/>
+         <dest obj="&gt;c_12" inlet="in"/>
+         <dest obj="change_15" inlet="in"/>
+      </net>
+      <net>
+         <source obj="&gt;c_12" outlet="out"/>
+         <dest obj="toggle_13" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_13" outlet="o"/>
+         <dest obj="*_37" inlet="a"/>
+         <dest obj="note_20" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_38" outlet="result"/>
+         <dest obj="*_37" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_37" outlet="result"/>
+         <dest obj="or_18" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="&gt;c_11" outlet="out"/>
+         <dest obj="toggle_12" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="toggle_12" outlet="o"/>
+         <dest obj="*_35" inlet="b"/>
+         <dest obj="note_19" inlet="velo"/>
+      </net>
+      <net>
+         <source obj="*_35" outlet="result"/>
+         <dest obj="or_18" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="i_41" outlet="out"/>
+         <dest obj="note_19" inlet="note"/>
+      </net>
+      <net>
+         <source obj="cc_35" outlet="midiCC"/>
+         <dest obj="change_14" inlet="in"/>
+         <dest obj="&gt;c_11" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_14" outlet="trig"/>
+         <dest obj="note_19" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="i_43" outlet="out"/>
+         <dest obj="note_20" inlet="note"/>
+      </net>
+      <net>
+         <source obj="change_15" outlet="trig"/>
+         <dest obj="note_20" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="or_18" outlet="o"/>
+         <dest obj="*_36" inlet="a"/>
+      </net>
+      <net>
+         <source obj="*_36" outlet="result"/>
+         <dest obj="play_7" inlet="start"/>
+      </net>
+      <net>
+         <source obj="+_6" outlet="out"/>
+         <dest obj="divremc_13" inlet="a"/>
+         <dest obj="divremc_14" inlet="a"/>
+      </net>
+      <net>
+         <source obj="to_23" outlet="o"/>
+         <dest obj="i_40" inlet="in"/>
+         <dest obj="+_6" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="read_20" outlet="o"/>
+         <dest obj="muls_20" inlet="in"/>
+      </net>
+      <net>
+         <source obj="muls_20" outlet="out"/>
+         <dest obj="to_23" inlet="i"/>
+      </net>
+      <net>
+         <source obj="or_16" outlet="o"/>
+         <dest obj="*_35" inlet="a"/>
+      </net>
+      <net>
+         <source obj="cc_38" outlet="midiCC"/>
+         <dest obj="dial_21" inlet="in"/>
+         <dest obj="map_2" inlet="c"/>
+      </net>
+      <net>
+         <source obj="cc_39" outlet="midiCC"/>
+         <dest obj="dial_22" inlet="in"/>
+         <dest obj="map_3" inlet="c"/>
+      </net>
+      <net>
+         <source obj="cc_40" outlet="midiCC"/>
+         <dest obj="dial_23" inlet="in"/>
+         <dest obj="map_7" inlet="c"/>
+      </net>
+      <net>
+         <source obj="cc_44" outlet="midiCC"/>
+         <dest obj="map_4" inlet="c"/>
+      </net>
+      <net>
+         <source obj="counter_1" outlet="c"/>
+         <dest obj="counter_2" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="counter_2" outlet="o"/>
+         <dest obj="+_9" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="cc_46" outlet="midiCC"/>
+         <dest obj="change_28" inlet="in"/>
+         <dest obj="modsrc_bpm" inlet="v"/>
+         <dest obj="map_6" inlet="c"/>
+      </net>
+      <net>
+         <source obj="map_2" outlet="o"/>
+         <dest obj="to_1" inlet="i"/>
+      </net>
+      <net>
+         <source obj="change_28" outlet="trig"/>
+         <dest obj="*_3" inlet="a"/>
+      </net>
+      <net>
+         <source obj="keyb_1" outlet="gate"/>
+         <dest obj="*_3" inlet="b"/>
+      </net>
+      <net>
+         <source obj="*_3" outlet="result"/>
+         <dest obj="change_29" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_29" outlet="trig"/>
+         <dest obj="modsrc_bpm" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="play_2" outlet="out"/>
+         <dest obj="mix_1" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="play_3" outlet="out"/>
+         <dest obj="mix_1" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="play_4" outlet="out"/>
+         <dest obj="mix_1" inlet="in3"/>
+      </net>
+      <net>
+         <source obj="play_5" outlet="out"/>
+         <dest obj="mix_1" inlet="in4"/>
+      </net>
+      <net>
+         <source obj="play_6" outlet="out"/>
+         <dest obj="mix_1" inlet="in5"/>
+      </net>
+      <net>
+         <source obj="play_7" outlet="out"/>
+         <dest obj="mix_1" inlet="in6"/>
+      </net>
+      <net>
+         <source obj="mux_1" outlet="o"/>
+         <dest obj="play_2" inlet="filename"/>
+      </net>
+      <net>
+         <source obj="c_1" outlet="out"/>
+         <dest obj="mux_1" inlet="i0"/>
+      </net>
+      <net>
+         <source obj="c_7" outlet="out"/>
+         <dest obj="mux_1" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="c_8" outlet="out"/>
+         <dest obj="mux_1" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="c_9" outlet="out"/>
+         <dest obj="mux_1" inlet="i3"/>
+      </net>
+      <net>
+         <source obj="c_2" outlet="out"/>
+         <dest obj="mux_2" inlet="i0"/>
+      </net>
+      <net>
+         <source obj="c_10" outlet="out"/>
+         <dest obj="mux_2" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="c_11" outlet="out"/>
+         <dest obj="mux_2" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="c_12" outlet="out"/>
+         <dest obj="mux_2" inlet="i3"/>
+      </net>
+      <net>
+         <source obj="c_3" outlet="out"/>
+         <dest obj="mux_3" inlet="i0"/>
+      </net>
+      <net>
+         <source obj="c_13" outlet="out"/>
+         <dest obj="mux_3" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="c_14" outlet="out"/>
+         <dest obj="mux_3" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="c_15" outlet="out"/>
+         <dest obj="mux_3" inlet="i3"/>
+      </net>
+      <net>
+         <source obj="c_4" outlet="out"/>
+         <dest obj="mux_4" inlet="i0"/>
+      </net>
+      <net>
+         <source obj="c_16" outlet="out"/>
+         <dest obj="mux_4" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="c_17" outlet="out"/>
+         <dest obj="mux_4" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="c_18" outlet="out"/>
+         <dest obj="mux_4" inlet="i3"/>
+      </net>
+      <net>
+         <source obj="c_5" outlet="out"/>
+         <dest obj="mux_5" inlet="i0"/>
+      </net>
+      <net>
+         <source obj="c_19" outlet="out"/>
+         <dest obj="mux_5" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="c_20" outlet="out"/>
+         <dest obj="mux_5" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="c_21" outlet="out"/>
+         <dest obj="mux_5" inlet="i3"/>
+      </net>
+      <net>
+         <source obj="c_6" outlet="out"/>
+         <dest obj="mux_6" inlet="i0"/>
+      </net>
+      <net>
+         <source obj="c_22" outlet="out"/>
+         <dest obj="mux_6" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="c_23" outlet="out"/>
+         <dest obj="mux_6" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="c_24" outlet="out"/>
+         <dest obj="mux_6" inlet="i3"/>
+      </net>
+      <net>
+         <source obj="mux_6" outlet="o"/>
+         <dest obj="play_7" inlet="filename"/>
+      </net>
+      <net>
+         <source obj="mux_5" outlet="o"/>
+         <dest obj="play_6" inlet="filename"/>
+      </net>
+      <net>
+         <source obj="mux_4" outlet="o"/>
+         <dest obj="play_5" inlet="filename"/>
+      </net>
+      <net>
+         <source obj="mux_3" outlet="o"/>
+         <dest obj="play_4" inlet="filename"/>
+      </net>
+      <net>
+         <source obj="mux_2" outlet="o"/>
+         <dest obj="play_3" inlet="filename"/>
+      </net>
+      <net>
+         <source obj="to_1" outlet="o"/>
+         <dest obj="mux_1" inlet="s"/>
+      </net>
+      <net>
+         <source obj="map_3" outlet="o"/>
+         <dest obj="to_2" inlet="i"/>
+      </net>
+      <net>
+         <source obj="map_4" outlet="o"/>
+         <dest obj="to_3" inlet="i"/>
+      </net>
+      <net>
+         <source obj="map_5" outlet="o"/>
+         <dest obj="to_6" inlet="i"/>
+      </net>
+      <net>
+         <source obj="to_3" outlet="o"/>
+         <dest obj="mux_2" inlet="s"/>
+      </net>
+      <net>
+         <source obj="to_6" outlet="o"/>
+         <dest obj="mux_4" inlet="s"/>
+      </net>
+      <net>
+         <source obj="map_6" outlet="o"/>
+         <dest obj="to_24" inlet="i"/>
+      </net>
+      <net>
+         <source obj="to_24" outlet="o"/>
+         <dest obj="mux_6" inlet="s"/>
+      </net>
+      <net>
+         <source obj="map_7" outlet="o"/>
+         <dest obj="to_25" inlet="i"/>
+      </net>
+      <net>
+         <source obj="to_25" outlet="o"/>
+         <dest obj="mux_5" inlet="s"/>
+      </net>
+      <net>
+         <source obj="to_2" outlet="o"/>
+         <dest obj="mux_3" inlet="s"/>
+      </net>
+      <net>
+         <source obj="cc_45" outlet="midiCC"/>
+         <dest obj="map_5" inlet="c"/>
+      </net>
+      <net>
+         <source obj="lp_1" outlet="out"/>
+         <dest obj="starver_1" inlet="in"/>
+         <dest obj="xfade_1" inlet="i1"/>
+      </net>
+      <net>
+         <source obj="mix_1" outlet="out"/>
+         <dest obj="lp_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="xfade_1" outlet="o"/>
+         <dest obj="out_1" inlet="left"/>
+         <dest obj="out_1" inlet="right"/>
+      </net>
+      <net>
+         <source obj="dial_1" outlet="out"/>
+         <dest obj="xfade_1" inlet="c"/>
+      </net>
+      <net>
+         <source obj="starver_1" outlet="out"/>
+         <dest obj="mix_2" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="mix_2" outlet="out"/>
+         <dest obj="xfade_1" inlet="i2"/>
+      </net>
+      <net>
+         <source obj="to_4" outlet="o"/>
+         <dest obj="divremc_1" inlet="denominator"/>
+      </net>
+      <net>
+         <source obj="clock_1" outlet="pos24ppq"/>
+         <dest obj="change_6" inlet="in"/>
+      </net>
+      <net>
+         <source obj="change_6" outlet="trig"/>
+         <dest obj="counter_1" inlet="trig"/>
+      </net>
+      <net>
+         <source obj="clock_1" outlet="active"/>
+         <dest obj="counter_1" inlet="r"/>
+      </net>
+   </nets>
+   <settings>
+      <subpatchmode>no</subpatchmode>
+      <MidiChannel>16</MidiChannel>
+      <NPresets>8</NPresets>
+      <NPresetEntries>32</NPresetEntries>
+      <NModulationSources>8</NModulationSources>
+      <NModulationTargetsPerSource>8</NModulationTargetsPerSource>
+   </settings>
+   <notes><![CDATA[]]></notes>
+   <windowPos>
+      <x>177</x>
+      <y>50</y>
+      <width>1539</width>
+      <height>1170</height>
+   </windowPos>
+</patch-1.0>
