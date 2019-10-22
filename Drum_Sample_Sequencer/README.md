@@ -29,7 +29,7 @@ I posted a short video demo of an earlier version of this project on Instagram:
 
 [https://www.instagram.com/p/BnI6q0fgm8S/](https://www.instagram.com/p/BnI6q0fgm8S/)
 
-In this early version the Axoloti didn't play samples by itself, but sequenced the AutioThingies DoubleDrummer drum synth via MIDI. This version does not exist like this anymore for me to share, but you can easily add MIDI sequencing yourself. Scroll down in the Axoloti Patcher until you see the sample player modules at the bottom and simply exchange them for MIDI Out Note modules.
+In this early version the Axoloti didn't play samples by itself, but sequenced the AudioThingies DoubleDrummer drum synth via MIDI. This version does not exist like this anymore for me to share, but you can easily add MIDI sequencing yourself. Scroll down in the Axoloti Patcher until you see the sample player modules at the bottom and simply exchange them for MIDI Out Note modules.
 
 Enjoy and let me know if you use this project :)
 
