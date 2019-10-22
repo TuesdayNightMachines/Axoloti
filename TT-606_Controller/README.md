@@ -5,7 +5,7 @@ License: CC-BY-NC-SA
 
 #### Files:
 - _TTNM__TT-606_Control_v01__606-MIDICH11.axp:_ This is the project file for editing in the Axoloti Patcher software
-- _TTNM__TT-606_Control_v01_Description.jpeg:_ **"Manual" of the TT-606 controller - READ THIS!!!**
+- _TTNM__TT-606_Control_v01_Description.jpeg:_ **Notes on the TT-606 controller - READ THIS!!!**
 - _TTNM__TT-606_Control_Midimix.midimix:_ Mapping file for the Akai Midimix USB-MIDI controller
 - _TTNM__TT-606_Control_Midimix.png:_ Screenshot of the Akai Midimix mapping
 
@@ -26,6 +26,8 @@ The controller puts most of the TT-606's MIDI inputs at your fingertips:
 - Instrument selection for HiHats
 
 It also has a simple mono audio effect built-in too. Just connect the TT-606 audio out to the Axoloti's input. 
+
+** CHECK THE DECRIPTION JPG AND SET YOUR TT-606 TO MIDI CH. 11 !!!***
 
 Enjoy and let me know if you use this project :)
 
