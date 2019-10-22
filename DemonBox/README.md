@@ -6,6 +6,7 @@ License: CC-BY-NC-SA
 #### Files:
 - _TTNM_DemonBox_v02.axp:_ This is the project file for editing in the Axoloti Patcher software
 - _TTNM_DemonBox_NanoKontrol_Mapping.nktrl2_data:_ Mapping file for the Korg nanoKONTROL2 USB-MIDI controller
+- _TTNM_DemonBox_NanoKontrol_Mapping.png:_ Screenshot of the Korg nanoKONTROL2 mapping
 - _TTNM_DemonBox_NanoKontrol_Photo.png:_ Photo of the nanoKONTROL2
 
 #### Description:
