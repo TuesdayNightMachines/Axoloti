@@ -27,7 +27,7 @@ The controller puts most of the TT-606's MIDI inputs at your fingertips:
 
 It also has a simple mono audio effect built-in too. Just connect the TT-606 audio out to the Axoloti's input. 
 
-** CHECK THE DECRIPTION JPG AND SET YOUR TT-606 TO MIDI CH. 11 !!!***
+** CHECK THE DECRIPTION JPG AND SET YOUR TT-606 TO MIDI CH. 11 !!!**
 
 Enjoy and let me know if you use this project :)
 
