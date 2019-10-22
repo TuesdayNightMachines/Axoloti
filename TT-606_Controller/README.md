@@ -5,7 +5,7 @@ License: CC-BY-NC-SA
 
 #### Files:
 - _TTNM__TT-606_Control_v01__606-MIDICH11.axp:_ This is the project file for editing in the Axoloti Patcher software
-- _TTNM__TT-606_Control_v01__Description.jpeg:_ **Visual description of the TT-606 controller project - READ THIS!!!**
+- _TTNM__TT-606_Control_v01_Description.jpeg:_ **Description of the TT-606 controller - READ THIS!!!**
 - _TTNM__TT-606_Control_Midimix.midimix:_ Mapping file for the Akai Midimix USB-MIDI controller
 - _TTNM__TT-606_Control_Midimix.png:_ Screenshot of the Akai Midimix mapping
 
