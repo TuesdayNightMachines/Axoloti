@@ -14,6 +14,7 @@ License: CC-BY-NC-SA
 This is a MIDI controller for the [Cyclone Analogic TT-606 Drum Drone](https://www.cyclone-analogic.fr/en/85-drum-drone-tt-606-8606164010378.html), a clone of the Roland TR 606 Drumatix drum machine.
 
 It requires an [Akai Midimix](https://www.akaipro.com/midimix) USB-MIDI controller to work as it is
+
 ... and **you need to set your TT-606's input MIDI channel to _11_** or change the channel in the Axoloti project file (see the comment in there).
 
 The controller puts most of the TT-606's MIDI inputs at your fingertips:
